@@ -1,21 +1,30 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { incrementMinutes } from "../clock/actions";
+import { AppState as StoreState } from "../redux-common/store";
 
-class GlobalTimer extends React.PureComponent {
+export type GlobalTimerProps = ConnectedProps<typeof connector>;
+
+class GlobalTimer extends React.PureComponent<GlobalTimerProps> {
   public componentDidMount() {
     window.setInterval(this.tick, 1000);
   }
 
-  state = {
-    time: 0,
-  };
-
   public tick = () => {
-    this.setState({ time: this.state.time + 1 });
+    this.props.incrementMinutes(15);
   };
 
   public render() {
-    return <div>{this.state.time}</div>;
+    return <div>{this.props.clock.minutes}</div>;
   }
 }
 
-export default GlobalTimer;
+export const mapState = (state: StoreState) => ({
+  clock: state.clock,
+});
+
+const connector = connect(mapState, {
+  incrementMinutes,
+});
+
+export default connector(GlobalTimer);
