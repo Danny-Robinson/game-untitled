@@ -1,8 +1,9 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalTimer from "./timer/global-timer";
+import Clock from "./clock/clock";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <GlobalTimer />
+        <Clock />
       </header>
     </div>
   );

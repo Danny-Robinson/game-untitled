@@ -1,7 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { incrementMinutes } from "../clock/actions";
-import { AppState as StoreState } from "../redux-common/store";
 
 export type GlobalTimerProps = ConnectedProps<typeof connector>;
 
@@ -15,16 +14,11 @@ class GlobalTimer extends React.PureComponent<GlobalTimerProps> {
   };
 
   public render() {
-    return <div>{this.props.clock.minutes}</div>;
+    return null;
   }
 }
-
-export const mapState = (state: StoreState) => ({
-  clock: state.clock,
-});
-
-const connector = connect(mapState, {
-  incrementMinutes,
+const connector = connect(undefined, {
+  incrementMinutes
 });
 
 export default connector(GlobalTimer);
