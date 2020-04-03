@@ -10,7 +10,7 @@ function App() {
   return (
     <Container>
       <Row>
-        <Column size={8}></Column>
+        <Column></Column>
         <Column size={4}>Insert Clock here</Column>
       </Row>
       <GlobalTimer />
