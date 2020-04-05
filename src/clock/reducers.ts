@@ -12,9 +12,7 @@ export function clock(
       var minutes = (state.minutes += action.minutes);
       var timeInHours = minutes / 60;
       var hours = state.hours + Math.floor(timeInHours);
-      console.log("pre " + minutes);
       minutes = minutes % 60;
-      console.log("post " + minutes);
       return { ...state, minutes, hours };
     default:
       return state;

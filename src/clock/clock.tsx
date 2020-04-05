@@ -12,9 +12,11 @@ class Clock extends React.PureComponent<ClockProps> {
     const minutesStyle = {
       transform: `rotate(${digitalMinutes * 6}deg)`
     };
+
     const hoursStyle = {
       transform: `rotate(${digitalHours * 30}deg)`
     };
+
     return (
       <div className={"clock"}>
         <h3>CLOCK</h3>

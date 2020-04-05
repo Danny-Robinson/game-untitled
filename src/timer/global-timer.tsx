@@ -17,6 +17,7 @@ class GlobalTimer extends React.PureComponent<GlobalTimerProps> {
     return null;
   }
 }
+
 const connector = connect(undefined, {
   incrementMinutes
 });
