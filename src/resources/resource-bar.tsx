@@ -2,36 +2,36 @@ import React from "react";
 import CSS from "csstype";
 
 interface OwnProps {
-  energy: number;
+  resource: number;
 }
 
-export type EnergyBarProps = OwnProps;
+export type ResourceBarProps = OwnProps;
 
-class EnergyBar extends React.PureComponent<EnergyBarProps> {
+class ResourceBar extends React.PureComponent<ResourceBarProps> {
   public render() {
-    const { energy } = this.props;
+    const { resource } = this.props;
 
     const barWidth: CSS.Properties = {
-      width: `${energy}%`,
+      width: `${resource}%`,
     };
 
     return (
       <div className="progress">
         <div
-          className={`progress-bar ${this.getColour(energy)}`}
+          className={`progress-bar ${this.getColour(resource)}`}
           style={barWidth}
         >
-          {energy}
+          {resource}
         </div>
       </div>
     );
   }
 
-  private getColour = (energy: number) => {
+  private getColour = (resource: number) => {
     switch (true) {
-      case energy <= 20:
+      case resource <= 20:
         return "bg-danger";
-      case energy <= 60:
+      case resource <= 60:
         return "bg-warning";
       default:
         return "bg-success";
@@ -39,4 +39,4 @@ class EnergyBar extends React.PureComponent<EnergyBarProps> {
   };
 }
 
-export default EnergyBar;
+export default ResourceBar;

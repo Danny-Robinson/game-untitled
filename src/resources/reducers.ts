@@ -1,7 +1,7 @@
 import { AppActions } from "../redux-common/types";
 import { Resources, INCREMENT_ENERGY, DECREMENT_ENERGY } from "./types";
 
-const clockReducerDefaultState: Resources = { energy: 100 };
+const clockReducerDefaultState: Resources = { energy: 60 };
 
 export function resources(
   state = clockReducerDefaultState,
