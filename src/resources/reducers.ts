@@ -1,7 +1,9 @@
 import { AppActions } from "../redux-common/types";
 import { Resources, INCREMENT_ENERGY, DECREMENT_ENERGY } from "./types";
 
-const clockReducerDefaultState: Resources = { energy: 100 };
+const MAX_ENERGY: number = 100;
+const MIN_ENERGY: number = 0;
+const clockReducerDefaultState: Resources = { energy: MAX_ENERGY };
 
 export function resources(
   state = clockReducerDefaultState,
@@ -10,15 +12,20 @@ export function resources(
   switch (action.type) {
     case INCREMENT_ENERGY: {
       const energy =
-        state.energy + action.energy > 100 ? 100 : state.energy + action.energy;
+        state.energy + action.energy > MAX_ENERGY
+          ? MAX_ENERGY
+          : state.energy + action.energy;
       return { ...state, energy };
     }
-    case DECREMENT_ENERGY:
-      const energy =
-        state.energy - action.energy < 0 ? 0 : state.energy - action.energy;
 
-      console.log(energy);
+    case DECREMENT_ENERGY: {
+      const energy =
+        state.energy - action.energy < MIN_ENERGY
+          ? MIN_ENERGY
+          : state.energy - action.energy;
       return { ...state, energy };
+    }
+
     default:
       return state;
   }
