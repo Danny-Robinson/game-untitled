@@ -9,11 +9,12 @@ export function clock(
 ): Clock {
   switch (action.type) {
     case INCREMENT_MINUTES:
-      var minutes = (state.minutes += action.minutes);
-      var timeInHours = minutes / 60;
-      var hours = state.hours + Math.floor(timeInHours);
-      minutes = minutes % 60;
-      return { ...state, minutes, hours };
+      const timeInMinutes = (state.minutes += action.minutes);
+      const timeInHours = state.hours + Math.floor(timeInMinutes / 60);
+      const minutes = timeInMinutes % 60;
+      const hours = timeInHours % 24;
+      const days = state.days + Math.floor(timeInHours / 24);
+      return { ...state, minutes, hours, days };
     default:
       return state;
   }
