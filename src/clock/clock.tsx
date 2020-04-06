@@ -6,19 +6,17 @@ export type ClockProps = ConnectedProps<typeof connector>;
 
 class Clock extends React.PureComponent<ClockProps> {
   public render() {
-    const digitalMinutes = this.props.clock.minutes;
-    const digitalHours = this.props.clock.hours;
-    const digitalDays = this.props.clock.days;
+    const {
+      clock: { minutes, hours, days }
+    } = this.props;
 
     const minutesStyle = {
-      transform: `rotate(${digitalMinutes * 6}deg)`
+      transform: `rotate(${minutes * 6}deg)`
     };
 
     const hoursStyle = {
-      transform: `rotate(${digitalHours * 30}deg)`
+      transform: `rotate(${hours * 30}deg)`
     };
-
-    const dayNumber = digitalDays + 1;
 
     return (
       <div className={"clock"}>
@@ -28,8 +26,8 @@ class Clock extends React.PureComponent<ClockProps> {
           <div className={"dial hours"} style={hoursStyle} />
         </div>
         <div className={"digital-clock"}>
-          Day {dayNumber.toString()}, {digitalHours.toString().padStart(2, "0")}
-          :{digitalMinutes.toString().padStart(2, "0")}
+          Day {(days + 1).toString()}, {hours.toString().padStart(2, "0")}:
+          {minutes.toString().padStart(2, "0")}
         </div>
       </div>
     );
