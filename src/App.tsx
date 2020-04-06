@@ -1,19 +1,21 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.scss";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GlobalTimer from "./timer/global-timer";
+import Container from "./common/container";
+import Row from "./common/row";
+import Column from "./common/column";
 import Clock from "./clock/clock";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <GlobalTimer />
-        <Clock />
-      </header>
-    </div>
+    <Container>
+      <Row>
+        <Column></Column>
+        <Column size={4}><Clock /></Column>
+      </Row>
+      <GlobalTimer />
+    </Container>
   );
 }
 
