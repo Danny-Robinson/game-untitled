@@ -2,17 +2,24 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { StoreState } from "../redux-common/store";
 import EnergyBar from "./resource-bar";
+import Card from "../common/card";
+import ListGroup from "../common/list-group";
 
 export type ResourcesProps = ConnectedProps<typeof connector>;
 
 class Resources extends React.PureComponent<ResourcesProps> {
   public render() {
-    const { resources } = this.props;
+    const {
+      resources: { energy },
+    } = this.props;
     return (
-      <div>
-        <h3>Energy</h3>
-        <EnergyBar resource={resources.energy} />
-      </div>
+      <Card title="Resources">
+        <ListGroup
+          items={[
+            { item: <EnergyBar resource={energy} />, subtitle: "Energy" },
+          ]}
+        ></ListGroup>
+      </Card>
     );
   }
 }
