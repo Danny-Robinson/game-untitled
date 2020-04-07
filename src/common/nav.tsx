@@ -1,7 +1,7 @@
 import React from "react";
 
 interface OwnProps {
-  items: ReadonlyArray<{ tab: string; clickFunction: () => void }>;
+  items: ReadonlyArray<{ tabName: string; clickFunction: () => void }>;
   active: string;
   disabled: ReadonlyArray<string>;
 }
@@ -17,12 +17,12 @@ class Nav extends React.PureComponent<NavProps> {
         {items.map((item) => (
           <li className="nav-item">
             <button
-              className={`nav-link ${item.tab === active ? "active" : ""} ${
-                disabled.includes(item.tab) ? "disabled" : ""
+              className={`nav-link ${item.tabName === active ? "active" : ""} ${
+                disabled.includes(item.tabName) ? "disabled" : ""
               }`}
               onClick={item.clickFunction}
             >
-              {item.tab}
+              {item.tabName}
             </button>
           </li>
         ))}
