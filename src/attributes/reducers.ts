@@ -10,7 +10,6 @@ export function attributes(
   switch (action.type) {
     case INCREMENT_FITNESS: {
       const fitness = state.fitness + action.fitness;
-      console.log(fitness);
       return { ...state, fitness };
     }
 
@@ -18,7 +17,7 @@ export function attributes(
       const fitness = state.fitness - action.fitness;
       return { ...state, fitness };
     }
-    
+
     default:
       return state;
   }
