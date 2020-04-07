@@ -3,6 +3,7 @@ import Card from "../common/card";
 import ListGroup from "../common/list-group";
 import { PlayerActionCategories } from "./types";
 import Nav from "../common/nav";
+import Sleep from "./sleep/sleep";
 
 interface StateProps {
   active: PlayerActionCategories;
@@ -20,22 +21,22 @@ class PlayerActions extends React.PureComponent<{}, StateProps> {
         <Nav
           items={[
             {
-              tab: PlayerActionCategories.General,
+              tabName: PlayerActionCategories.General,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.General),
             },
             {
-              tab: PlayerActionCategories.Theft,
+              tabName: PlayerActionCategories.Theft,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.Theft),
             },
             {
-              tab: PlayerActionCategories.Violence,
+              tabName: PlayerActionCategories.Violence,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.Violence),
             },
             {
-              tab: PlayerActionCategories.Training,
+              tabName: PlayerActionCategories.Training,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.Training),
             },
@@ -54,7 +55,7 @@ class PlayerActions extends React.PureComponent<{}, StateProps> {
   private renderActionGroup = (activeTab: PlayerActionCategories) => {
     switch (activeTab) {
       case PlayerActionCategories.General:
-        return <ListGroup items={[{ item: <div>Sleep</div> }]}></ListGroup>;
+        return <ListGroup items={[{ item: <Sleep /> }]}></ListGroup>;
       case PlayerActionCategories.Theft:
         return <ListGroup items={[{ item: <div>Steal</div> }]}></ListGroup>;
     }
