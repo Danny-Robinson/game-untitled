@@ -1,14 +1,20 @@
 import { AppActions } from "../redux-common/types";
-import { Dispatch } from "redux";
-import { StoreState } from "../redux-common/store";
 import { INCREMENT_FITNESS, DECREMENT_FITNESS } from "./types";
 
-export const incrementFitness = (fitness: number): AppActions => ({
+export const incrementFitness = (
+  fitness: number,
+  fitnessProgress: number
+): AppActions => ({
   type: INCREMENT_FITNESS,
-  fitness
+  fitness,
+  fitnessProgress
 });
 
-export const decrementFitness = (fitness: number): AppActions => ({
+export const decrementFitness = (
+  fitness: number,
+  fitnessProgress: number
+): AppActions => ({
   type: DECREMENT_FITNESS,
-  fitness
+  fitness,
+  fitnessProgress
 });
