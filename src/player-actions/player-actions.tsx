@@ -21,22 +21,22 @@ class PlayerActions extends React.PureComponent<{}, StateProps> {
         <Nav
           items={[
             {
-              tab: PlayerActionCategories.General,
+              tabName: PlayerActionCategories.General,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.General),
             },
             {
-              tab: PlayerActionCategories.Theft,
+              tabName: PlayerActionCategories.Theft,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.Theft),
             },
             {
-              tab: PlayerActionCategories.Violence,
+              tabName: PlayerActionCategories.Violence,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.Violence),
             },
             {
-              tab: PlayerActionCategories.Training,
+              tabName: PlayerActionCategories.Training,
               clickFunction: () =>
                 this.setActiveTab(PlayerActionCategories.Training),
             },
