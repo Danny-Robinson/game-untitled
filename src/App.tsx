@@ -7,11 +7,15 @@ import Row from "./common/row";
 import Column from "./common/column";
 import Clock from "./clock/clock";
 import Resources from "./resources/resources";
+import PlayerActions from "./player-actions/player-actions";
 
 function App() {
   return (
     <Container>
       <Row>
+        <Column>
+          <PlayerActions />
+        </Column>
         <Column />
         <Column size={2}>
           <Clock />
