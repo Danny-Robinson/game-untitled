@@ -14,16 +14,9 @@ export function attributes(
     case INCREMENT_FITNESS: {
       const newFitnessProgress = state.fitnessProgress + action.fitnessProgress;
       const fitnessProgress =
-        newFitnessProgress > 100
-          ? newFitnessProgress - 100
-          : newFitnessProgress;
+        newFitnessProgress > 99 ? newFitnessProgress - 100 : newFitnessProgress;
       const fitness = state.fitness + Math.floor(newFitnessProgress / 100);
       return { ...state, fitness, fitnessProgress };
-    }
-
-    case DECREMENT_FITNESS: {
-      const fitness = state.fitness - action.fitness;
-      return { ...state, fitness };
     }
 
     default:

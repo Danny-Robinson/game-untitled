@@ -6,7 +6,7 @@ import * as attributesReducer from "../attributes/reducers";
 export const rootReducer = combineReducers({
   ...timerReducer,
   ...resourcesReducer,
-  ...attributesReducer,
+  ...attributesReducer
 });
 
 export type StoreState = ReturnType<typeof rootReducer>;

@@ -8,6 +8,7 @@ import Column from "./common/column";
 import Clock from "./clock/clock";
 import Resources from "./resources/resources";
 import PlayerActions from "./player-actions/player-actions";
+import Attributes from "./attributes/attributes";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Column size={2}>
           <Clock />
           <Resources />
+          <Attributes />
         </Column>
       </Row>
       <GlobalTimer />
