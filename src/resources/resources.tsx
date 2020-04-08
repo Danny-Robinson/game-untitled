@@ -10,13 +10,13 @@ export type ResourcesProps = ConnectedProps<typeof connector>;
 class Resources extends React.PureComponent<ResourcesProps> {
   public render() {
     const {
-      resources: { energy },
+      resources: { energy }
     } = this.props;
     return (
-      <Card title="Resources" className="resources-card">
+      <Card title="Resources">
         <ListGroup
           items={[
-            { item: <ResourceBar resource={energy} />, subtitle: "Energy" },
+            { item: <ResourceBar resource={energy} />, subtitle: "Energy" }
           ]}
         ></ListGroup>
       </Card>
@@ -25,7 +25,7 @@ class Resources extends React.PureComponent<ResourcesProps> {
 }
 
 export const mapState = (state: StoreState) => ({
-  resources: state.resources,
+  resources: state.resources
 });
 
 const connector = connect(mapState);

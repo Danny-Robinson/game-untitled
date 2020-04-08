@@ -13,7 +13,7 @@ class Attributes extends React.PureComponent<AttributesProps> {
       attributes: { fitnessProgress, fitness }
     } = this.props;
     return (
-      <Card title="Attributes" className="attributes-card">
+      <Card title="Attributes">
         <ListGroup
           items={[
             {
