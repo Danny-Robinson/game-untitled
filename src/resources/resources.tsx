@@ -13,7 +13,7 @@ class Resources extends React.PureComponent<ResourcesProps> {
       resources: { energy },
     } = this.props;
     return (
-      <Card title="Resources">
+      <Card title="Resources" className="resources-card">
         <ListGroup
           items={[
             { item: <ResourceBar resource={energy} />, subtitle: "Energy" },

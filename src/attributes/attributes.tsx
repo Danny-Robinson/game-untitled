@@ -10,16 +10,16 @@ export type AttributesProps = ConnectedProps<typeof connector>;
 class Attributes extends React.PureComponent<AttributesProps> {
   public render() {
     const {
-      attributes: { fitnessProgress, fitness }
+      attributes: { fitnessProgress, fitness },
     } = this.props;
     return (
-      <Card title="Attributes">
+      <Card title="Attributes" className="attributes-card">
         <ListGroup
           items={[
             {
               item: <FitnessBar attribute={fitnessProgress} />,
-              subtitle: `Fitness level: ${fitness}`
-            }
+              subtitle: `Fitness level: ${fitness}`,
+            },
           ]}
         ></ListGroup>
       </Card>
@@ -28,7 +28,7 @@ class Attributes extends React.PureComponent<AttributesProps> {
 }
 
 export const mapState = (state: StoreState) => ({
-  attributes: state.attributes
+  attributes: state.attributes,
 });
 
 const connector = connect(mapState);
