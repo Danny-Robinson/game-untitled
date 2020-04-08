@@ -27,12 +27,12 @@ class Exercise extends React.PureComponent<AttributesProps> {
 
     const fitnessIncrease = 20 / Math.pow(2, fitness - 1);
     switch (true) {
-      case energy > 19: {
+      case energy > 9: {
         this.props.incrementFitness(fitnessIncrease);
-        this.props.decrementEnergy(20);
+        this.props.decrementEnergy(10);
       }
 
-      case energy < 20: {
+      case energy < 10: {
         console.log("Energy too low to exercise right now");
       }
     }
