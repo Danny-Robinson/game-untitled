@@ -4,7 +4,7 @@ import ListGroup from "../common/list-group";
 import { PlayerActionCategories } from "./types";
 import Nav from "../common/nav";
 import Sleep from "./sleep/sleep";
-import Exercise from "./exercise/exercise";
+import Exercise from "./training/pushups";
 
 interface StateProps {
   active: PlayerActionCategories;

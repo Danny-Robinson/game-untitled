@@ -13,8 +13,8 @@ class MessageFeed extends React.PureComponent<MessageFeedProps> {
       <Card title="Word on the street" className="message-feed-card">
         <ListGroup
           className="message-feed-items"
-          items={messages.map((message) => ({
-            item: <div>{message}</div>,
+          items={[...messages].reverse().map((message) => ({
+            item: <div>{message}</div>
           }))}
         ></ListGroup>
       </Card>
@@ -23,7 +23,7 @@ class MessageFeed extends React.PureComponent<MessageFeedProps> {
 }
 
 export const mapState = (state: StoreState) => ({
-  messages: state.messages,
+  messages: state.messages
 });
 
 const connector = connect(mapState);
