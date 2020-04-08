@@ -1,8 +1,16 @@
 import React from "react";
 
-class Row extends React.PureComponent {
+interface OwnProps {
+  className?: string;
+}
+
+export type RowProps = OwnProps;
+
+class Row extends React.PureComponent<RowProps> {
   public render() {
-    return <div className="row">{this.props.children}</div>;
+    return (
+      <div className={`row ${this.props.className}`}>{this.props.children}</div>
+    );
   }
 }
 

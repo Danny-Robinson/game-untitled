@@ -14,20 +14,18 @@ import MessageFeed from "./message-feed/message-feed";
 function App() {
   return (
     <Container>
-      <Row>
+      <Row className="justify-content-between align-items-center">
         <Column size={4}>
           <MessageFeed />
         </Column>
-        <Column />
         <Column size={2} smallSize={6}>
           <Clock />
         </Column>
       </Row>
-      <Row>
+      <Row className="justify-content-between align-items-center">
         <Column size={4}>
           <PlayerActions />
         </Column>
-        <Column />
         <Column size={2} smallSize={6}>
           <Resources />
           <Attributes />

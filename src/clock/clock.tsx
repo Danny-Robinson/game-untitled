@@ -20,7 +20,7 @@ class Clock extends React.PureComponent<ClockProps> {
 
     return (
       <div className={"clock"}>
-        <h3>CLOCK</h3>
+        <h3>Time</h3>
         <div className={"analog-clock"}>
           <div className={"dial minutes"} style={minutesStyle} />
           <div className={"dial hours"} style={hoursStyle} />
