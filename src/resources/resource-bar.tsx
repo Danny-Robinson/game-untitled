@@ -1,5 +1,5 @@
 import React from "react";
-import CSS from "csstype";
+import ProgressBar from "../common/progress-bar";
 
 interface OwnProps {
   resource: number;
@@ -11,19 +11,12 @@ class ResourceBar extends React.PureComponent<ResourceBarProps> {
   public render() {
     const { resource } = this.props;
 
-    const barWidth: CSS.Properties = {
-      width: `${resource}%`,
-    };
-
     return (
-      <div className="progress">
-        <div
-          className={`progress-bar ${this.getColour(resource)}`}
-          style={barWidth}
-        >
-          {resource}
-        </div>
-      </div>
+      <ProgressBar
+        progress={resource}
+        colour={this.getColour(resource)}
+        showProgressValue
+      />
     );
   }
 

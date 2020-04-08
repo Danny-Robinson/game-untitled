@@ -1,9 +1,9 @@
 import { AppActions } from "../redux-common/types";
-import { Attributes, INCREMENT_FITNESS, DECREMENT_FITNESS } from "./types";
+import { Attributes, INCREMENT_FITNESS } from "./types";
 
 const attributesReducerDefaultState: Attributes = {
   fitness: 1,
-  fitnessProgress: 0
+  fitnessProgress: 0,
 };
 
 export function attributes(
