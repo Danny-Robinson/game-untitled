@@ -4,9 +4,9 @@ import { incrementHours } from "../../clock/actions";
 import { incrementEnergy } from "../../resources/actions";
 import Button from "../../common/button";
 
-export type AttributesProps = ConnectedProps<typeof connector>;
+export type ResourcesProps = ConnectedProps<typeof connector>;
 
-class Sleep extends React.PureComponent<AttributesProps> {
+class Sleep extends React.PureComponent<ResourcesProps> {
   public render() {
     return (
       <Button primary onClick={this.sleep}>
