@@ -9,16 +9,16 @@ import { incrementHours } from "../../clock/actions";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
-class Exercise extends React.PureComponent<AttributesProps> {
+class Pushups extends React.PureComponent<AttributesProps> {
   public render() {
     return (
-      <Button primary onClick={this.exercise}>
-        Exercise
+      <Button primary onClick={this.pushups}>
+        Push Ups
       </Button>
     );
   }
 
-  private exercise = () => {
+  private pushups = () => {
     const {
       attributes: { fitness }
     } = this.props;
@@ -61,4 +61,4 @@ const connector = connect(mapState, {
   incrementHours
 });
 
-export default connector(Exercise);
+export default connector(Pushups);
