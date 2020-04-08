@@ -17,9 +17,9 @@ interface OwnProps {
   onClick?(event?: React.MouseEvent<HTMLButtonElement>): void;
 }
 
-export type AppButtonProps = OwnProps;
+export type ButtonProps = OwnProps;
 
-class AppButton extends React.PureComponent<AppButtonProps> {
+class Button extends React.PureComponent<ButtonProps> {
   public render() {
     const {
       className = "",
@@ -31,7 +31,7 @@ class AppButton extends React.PureComponent<AppButtonProps> {
       onClick,
       id,
       type,
-      children,
+      children
     } = this.props;
 
     return (
@@ -46,8 +46,8 @@ class AppButton extends React.PureComponent<AppButtonProps> {
             "btn-danger": danger,
             "btn-link": link,
             "btn-primary": primary,
-            "btn-secondary": secondary,
-          },
+            "btn-secondary": secondary
+          }
         ])}
         disabled={disabled}
       >
@@ -57,4 +57,4 @@ class AppButton extends React.PureComponent<AppButtonProps> {
   }
 }
 
-export default AppButton;
+export default Button;

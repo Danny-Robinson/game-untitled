@@ -6,6 +6,10 @@ import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
 import { addMessage } from "../../message-feed/actions";
 import { incrementHours } from "../../clock/actions";
+import {
+  attributesReducerDefaultState,
+  resourceReducerDefaultState
+} from "../../redux-common/default-store-state";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
@@ -50,8 +54,8 @@ class Pushups extends React.PureComponent<AttributesProps> {
 }
 
 export const mapState = (state: StoreState) => ({
-  attributes: state.attributes,
-  resources: state.resources
+  attributes: state ? state.attributes : attributesReducerDefaultState,
+  resources: state ? state.resources : resourceReducerDefaultState
 });
 
 const connector = connect(mapState, {

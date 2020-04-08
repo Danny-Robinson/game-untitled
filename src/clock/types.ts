@@ -7,6 +7,8 @@ export interface Clock {
 export const INCREMENT_MINUTES = "INCREMENT_MINUTES";
 export const INCREMENT_HOURS = "INCREMENT_HOURS";
 export const INCREMENT_DAYS = "INCREMENT_DAYS";
+export const PAUSE_GAME = "PAUSE_GAME";
+export const UNPAUSE_GAME = "UNPAUSE_GAME";
 
 export interface IncrementMinutesAction {
   type: typeof INCREMENT_MINUTES;
@@ -23,7 +25,17 @@ export interface IncrementDaysAction {
   days: Clock["days"];
 }
 
+export interface PauseGameAction {
+  type: typeof PAUSE_GAME;
+}
+
+export interface UnpauseGameAction {
+  type: typeof UNPAUSE_GAME;
+}
+
 export type ClockActionTypes =
   | IncrementMinutesAction
   | IncrementHoursAction
-  | IncrementDaysAction;
+  | IncrementDaysAction
+  | PauseGameAction
+  | UnpauseGameAction;
