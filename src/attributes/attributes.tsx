@@ -18,7 +18,7 @@ class Attributes extends React.PureComponent<AttributesProps> {
           items={[
             {
               item: <FitnessBar attribute={fitnessProgress} />,
-              subtitle: "Fitness level: " + fitness
+              subtitle: `Fitness level: ${fitness}`
             }
           ]}
         ></ListGroup>

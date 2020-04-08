@@ -3,7 +3,6 @@ import { connect, ConnectedProps } from "react-redux";
 import { incrementFitness } from "../../attributes/actions";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
-//import { mapState } from "../../clock/clock";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
