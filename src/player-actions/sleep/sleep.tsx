@@ -2,6 +2,8 @@ import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { incrementHours } from "../../clock/actions";
 import { incrementEnergy } from "../../resources/actions";
+import { addMessage } from "../../message-feed/actions";
+
 import Button from "../../common/button";
 
 export type ResourcesProps = ConnectedProps<typeof connector>;
@@ -16,11 +18,20 @@ class Sleep extends React.PureComponent<ResourcesProps> {
   }
 
   private sleep = () => {
-    this.props.incrementHours(8);
-    this.props.incrementEnergy(100);
+    const hours = 8;
+    const energy = 100;
+    this.props.incrementHours(hours);
+    this.props.incrementEnergy(energy);
+    this.props.addMessage(
+      `You slept for ${hours} hours and regained ${energy} energy`
+    );
   };
 }
 
-const connector = connect(undefined, { incrementHours, incrementEnergy });
+const connector = connect(undefined, {
+  incrementHours,
+  incrementEnergy,
+  addMessage,
+});
 
 export default connector(Sleep);
