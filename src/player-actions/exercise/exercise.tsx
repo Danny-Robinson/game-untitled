@@ -4,6 +4,8 @@ import { incrementFitness } from "../../attributes/actions";
 import { decrementEnergy } from "../../resources/actions";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
+import { addMessage } from "../../message-feed/actions";
+import { incrementHours } from "../../clock/actions";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
@@ -27,14 +29,22 @@ class Exercise extends React.PureComponent<AttributesProps> {
 
     const fitnessIncrease = 20 / Math.pow(2, fitness - 1);
     switch (true) {
-      case energy > 9: {
+      case energy >= 10: {
         this.props.incrementFitness(fitnessIncrease);
         this.props.decrementEnergy(10);
+        this.props.incrementHours(1);
+        break;
       }
 
       case energy < 10: {
-        console.log("Energy too low to exercise right now");
+        this.props.addMessage(
+          "You do not have enough energy to exercise right now"
+        );
+        break;
       }
+
+      default:
+        break;
     }
   };
 }
@@ -44,6 +54,11 @@ export const mapState = (state: StoreState) => ({
   resources: state.resources
 });
 
-const connector = connect(mapState, { incrementFitness, decrementEnergy });
+const connector = connect(mapState, {
+  incrementFitness,
+  decrementEnergy,
+  addMessage,
+  incrementHours
+});
 
 export default connector(Exercise);
