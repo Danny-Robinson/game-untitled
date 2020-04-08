@@ -1,6 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { incrementFitness } from "../../attributes/actions";
+import { decrementEnergy } from "../../resources/actions";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
 
@@ -20,15 +21,29 @@ class Exercise extends React.PureComponent<AttributesProps> {
       attributes: { fitness }
     } = this.props;
 
+    const {
+      resources: { energy }
+    } = this.props;
+
     const fitnessIncrease = 20 / Math.pow(2, fitness - 1);
-    this.props.incrementFitness(fitnessIncrease);
+    switch (true) {
+      case energy > 19: {
+        this.props.incrementFitness(fitnessIncrease);
+        this.props.decrementEnergy(20);
+      }
+
+      case energy < 20: {
+        console.log("Energy too low to exercise right now");
+      }
+    }
   };
 }
 
 export const mapState = (state: StoreState) => ({
-  attributes: state.attributes
+  attributes: state.attributes,
+  resources: state.resources
 });
 
-const connector = connect(mapState, { incrementFitness });
+const connector = connect(mapState, { incrementFitness, decrementEnergy });
 
 export default connector(Exercise);
