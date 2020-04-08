@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { StoreState } from "../redux-common/store";
-import EnergyBar from "./resource-bar";
+import ResourceBar from "./resource-bar";
 import Card from "../common/card";
 import ListGroup from "../common/list-group";
 
@@ -16,7 +16,7 @@ class Resources extends React.PureComponent<ResourcesProps> {
       <Card title="Resources">
         <ListGroup
           items={[
-            { item: <EnergyBar resource={energy} />, subtitle: "Energy" },
+            { item: <ResourceBar resource={energy} />, subtitle: "Energy" },
           ]}
         ></ListGroup>
       </Card>
