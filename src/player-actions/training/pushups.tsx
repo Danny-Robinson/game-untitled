@@ -38,7 +38,7 @@ class Pushups extends React.PureComponent<AttributesProps> {
 
       case energy < 10: {
         this.props.addMessage(
-          "You do not have enough energy to exercise right now"
+          "You do not have enough energy to do push ups right now"
         );
         break;
       }

@@ -38,7 +38,7 @@ class Gym extends React.PureComponent<AttributesProps> {
 
       case energy < 65: {
         this.props.addMessage(
-          "You do not have enough energy to exercise right now"
+          "You do not have enough energy to use the gym right now"
         );
         break;
       }
