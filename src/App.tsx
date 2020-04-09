@@ -11,6 +11,7 @@ import PlayerActions from "./player-actions/player-actions";
 import Attributes from "./attributes/attributes";
 import MessageFeed from "./message-feed/message-feed";
 import UserMenu from "./user-menu/user-menu";
+import Inventory from "./inventory/inventory";
 
 function App() {
   return (
@@ -31,6 +32,11 @@ function App() {
         <Column size={2} smallSize={6}>
           <Resources />
           <Attributes />
+        </Column>
+      </Row>
+      <Row>
+        <Column size={4}>
+          <Inventory />
         </Column>
       </Row>
       <GlobalTimer />

@@ -31,7 +31,7 @@ class Sleep extends React.PureComponent<ResourcesProps> {
 const connector = connect(undefined, {
   incrementHours,
   incrementEnergy,
-  addMessage,
+  addMessage
 });
 
 export default connector(Sleep);
