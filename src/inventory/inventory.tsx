@@ -22,7 +22,9 @@ class Inventory extends React.PureComponent<InventoryProps> {
             }))}
           ></ListGroup>
         </Card>
-        <Card title="Tradeables">{convertTradeablesToText(tradeables)}</Card>
+        <Card
+          title={`Tradeables: ${convertTradeablesToText(tradeables)}`}
+        ></Card>
       </Card>
     );
   }
