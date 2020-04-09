@@ -23,7 +23,7 @@ class MessageFeed extends React.PureComponent<MessageFeedProps> {
 }
 
 export const mapState = (state: StoreState) => ({
-  messages: state.messages
+  messages: state ? state.messages : []
 });
 
 const connector = connect(mapState);

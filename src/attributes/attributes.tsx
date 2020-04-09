@@ -4,6 +4,7 @@ import { StoreState } from "../redux-common/store";
 import FitnessBar from "./attribute-bar";
 import Card from "../common/card";
 import ListGroup from "../common/list-group";
+import { attributesReducerDefaultState } from "../redux-common/default-store-state";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
@@ -12,6 +13,7 @@ class Attributes extends React.PureComponent<AttributesProps> {
     const {
       attributes: { fitnessProgress, fitness }
     } = this.props;
+
     return (
       <Card title="Attributes">
         <ListGroup
@@ -28,7 +30,7 @@ class Attributes extends React.PureComponent<AttributesProps> {
 }
 
 export const mapState = (state: StoreState) => ({
-  attributes: state.attributes
+  attributes: state ? state.attributes : attributesReducerDefaultState
 });
 
 const connector = connect(mapState);

@@ -1,10 +1,6 @@
 import { AppActions } from "../redux-common/types";
 import { Attributes, INCREMENT_FITNESS } from "./types";
-
-const attributesReducerDefaultState: Attributes = {
-  fitness: 1,
-  fitnessProgress: 0,
-};
+import { attributesReducerDefaultState } from "../redux-common/default-store-state";
 
 export function attributes(
   state = attributesReducerDefaultState,

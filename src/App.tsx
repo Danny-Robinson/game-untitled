@@ -10,6 +10,7 @@ import Resources from "./resources/resources";
 import PlayerActions from "./player-actions/player-actions";
 import Attributes from "./attributes/attributes";
 import MessageFeed from "./message-feed/message-feed";
+import UserMenu from "./user-menu/user-menu";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <MessageFeed />
         </Column>
         <Column size={2} smallSize={6}>
+          <UserMenu />
           <Clock />
         </Column>
       </Row>

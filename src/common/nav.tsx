@@ -14,8 +14,8 @@ class Nav extends React.PureComponent<NavProps> {
 
     return (
       <ul className="nav nav-tabs">
-        {items.map((item) => (
-          <li className="nav-item">
+        {items.map((item, index) => (
+          <li className="nav-item" key={`nav-item-${index}`}>
             <button
               className={`nav-link ${item.tabName === active ? "active" : ""} ${
                 disabled.includes(item.tabName) ? "disabled" : ""

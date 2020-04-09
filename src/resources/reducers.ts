@@ -1,12 +1,13 @@
 import { AppActions } from "../redux-common/types";
 import { Resources, INCREMENT_ENERGY, DECREMENT_ENERGY } from "./types";
-
-const MAX_ENERGY: number = 100;
-const MIN_ENERGY: number = 0;
-const clockReducerDefaultState: Resources = { energy: MAX_ENERGY };
+import {
+  resourceReducerDefaultState,
+  MAX_ENERGY,
+  MIN_ENERGY
+} from "../redux-common/default-store-state";
 
 export function resources(
-  state = clockReducerDefaultState,
+  state = resourceReducerDefaultState,
   action: AppActions
 ): Resources {
   switch (action.type) {
