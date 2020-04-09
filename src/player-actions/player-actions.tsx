@@ -4,7 +4,8 @@ import ListGroup from "../common/list-group";
 import { PlayerActionCategories } from "./types";
 import Nav from "../common/nav";
 import Sleep from "./sleep/sleep";
-import Exercise from "./training/pushups";
+import PushUps from "./training/pushups";
+import Gym from "./training/gym";
 
 interface StateProps {
   active: PlayerActionCategories;
@@ -51,13 +52,14 @@ class PlayerActions extends React.PureComponent<{}, StateProps> {
   }
 
   private renderActionGroup = (activeTab: PlayerActionCategories) => {
+    const trainingItems = [{ item: <PushUps /> }, { item: <Gym /> }];
     switch (activeTab) {
       case PlayerActionCategories.General:
         return <ListGroup items={[{ item: <Sleep /> }]}></ListGroup>;
       case PlayerActionCategories.Theft:
         return <ListGroup items={[{ item: <div>Steal</div> }]}></ListGroup>;
       case PlayerActionCategories.Training:
-        return <ListGroup items={[{ item: <Exercise /> }]}></ListGroup>;
+        return <ListGroup items={trainingItems} />;
     }
   };
 

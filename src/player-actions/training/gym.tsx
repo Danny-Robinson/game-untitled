@@ -9,16 +9,16 @@ import { incrementHours } from "../../clock/actions";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
-class Pushups extends React.PureComponent<AttributesProps> {
+class Gym extends React.PureComponent<AttributesProps> {
   public render() {
     return (
-      <Button primary onClick={this.pushups}>
-        Push Ups
+      <Button primary onClick={this.gym}>
+        Gym
       </Button>
     );
   }
 
-  private pushups = () => {
+  private gym = () => {
     const {
       attributes: { fitness }
     } = this.props;
@@ -27,18 +27,18 @@ class Pushups extends React.PureComponent<AttributesProps> {
       resources: { energy }
     } = this.props;
 
-    const fitnessIncrease = 20 / Math.pow(2, fitness - 1);
+    const fitnessIncrease = 100 / Math.pow(2, fitness - 1);
     switch (true) {
-      case energy >= 10: {
+      case energy >= 65: {
         this.props.incrementFitness(fitnessIncrease);
-        this.props.decrementEnergy(10);
-        this.props.incrementHours(1);
+        this.props.decrementEnergy(60);
+        this.props.incrementHours(3);
         break;
       }
 
-      case energy < 10: {
+      case energy < 65: {
         this.props.addMessage(
-          "You do not have enough energy to do push ups right now"
+          "You do not have enough energy to use the gym right now"
         );
         break;
       }
@@ -61,4 +61,4 @@ const connector = connect(mapState, {
   incrementHours
 });
 
-export default connector(Pushups);
+export default connector(Gym);
