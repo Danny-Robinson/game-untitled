@@ -14,5 +14,11 @@ export const clockReducerDefaultState: Clock = {
 
 export const attributesReducerDefaultState: Attributes = {
   fitness: 1,
-  fitnessProgress: 0
+  fitnessProgress: 0,
+  combat: 1,
+  combatProgress: 0,
+  respect: 1,
+  respectProgress: 0,
+  notoriety: 1,
+  mischief: 1
 };

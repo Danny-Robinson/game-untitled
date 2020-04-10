@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { incrementFitness } from "../../attributes/actions";
+import { incrementFitness, incrementCombat } from "../../attributes/actions";
 import { decrementEnergy } from "../../resources/actions";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
@@ -13,22 +13,22 @@ import {
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
-class Gym extends React.PureComponent<AttributesProps> {
+class Sparring extends React.PureComponent<AttributesProps> {
   public render() {
     const {
-      attributes: { respect }
+      attributes: { respect, fitness }
     } = this.props;
 
     return (
-      <Button primary onClick={this.gym} disabled={respect < 5}>
-        Gym
+      <Button primary onClick={this.sparring} disabled={respect < 10}>
+        Spar
       </Button>
     );
   }
 
-  private gym = () => {
+  private sparring = () => {
     const {
-      attributes: { fitness }
+      attributes: { fitness, combat }
     } = this.props;
 
     const {
@@ -41,12 +41,13 @@ class Gym extends React.PureComponent<AttributesProps> {
         this.props.incrementFitness(fitnessIncrease);
         this.props.decrementEnergy(60);
         this.props.incrementHours(3);
+        this.props.incrementCombat(50);
         break;
       }
 
       case energy < 65: {
         this.props.addMessage(
-          "You do not have enough energy to use the gym right now"
+          "You do not have enough energy to spar right now"
         );
         break;
       }
@@ -66,7 +67,8 @@ const connector = connect(mapState, {
   incrementFitness,
   decrementEnergy,
   addMessage,
-  incrementHours
+  incrementHours,
+  incrementCombat
 });
 
-export default connector(Gym);
+export default connector(Sparring);
