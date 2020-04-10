@@ -1,7 +1,8 @@
-import { ClockActionTypes } from "../clock/types";
-import { ResourceActionTypes } from "../resources/types";
-import { AttributeActionTypes } from "../attributes/types";
-import { MessageFeedActionTypes } from "../message-feed/types";
+import { ClockActionTypes as ClockActions } from "../clock/types";
+import { ResourceActionTypes as ResourceActions } from "../resources/types";
+import { AttributeActionTypes as AttributeActions } from "../attributes/types";
+import { MessageFeedActionTypes as MessageFeedActions } from "../message-feed/types";
+import { InventoryActions } from "../inventory/types";
 
 export const CLEAR_STORE = "CLEAR_STORE";
 
@@ -12,8 +13,9 @@ export interface ClearStoreAction {
 export type GeneralStoreActions = ClearStoreAction;
 
 export type AppActions =
-  | ClockActionTypes
-  | ResourceActionTypes
-  | AttributeActionTypes
-  | MessageFeedActionTypes
-  | GeneralStoreActions;
+  | ClockActions
+  | ResourceActions
+  | AttributeActions
+  | MessageFeedActions
+  | GeneralStoreActions
+  | InventoryActions;
