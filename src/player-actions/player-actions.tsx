@@ -8,6 +8,7 @@ import { StoreState } from "../redux-common/store";
 import { connect, ConnectedProps } from "react-redux";
 import PushUps from "./training/pushups";
 import Gym from "./training/gym";
+import Sparring from "./training/sparring";
 import StealTradeable from "./theft/steal-tradable";
 import { Tradeable } from "../inventory/types";
 
@@ -65,7 +66,11 @@ class PlayerActions extends React.PureComponent<
   }
 
   private renderActionGroup = (activeTab: PlayerActionCategories) => {
-    const trainingItems = [{ item: <PushUps /> }, { item: <Gym /> }];
+    const trainingItems = [
+      { item: <PushUps /> },
+      { item: <Gym /> },
+      { item: <Sparring /> }
+    ];
     switch (activeTab) {
       case PlayerActionCategories.General:
         return <ListGroup items={[{ item: <Sleep /> }]}></ListGroup>;
