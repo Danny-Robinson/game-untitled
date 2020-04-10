@@ -8,6 +8,8 @@ import { StoreState } from "../redux-common/store";
 import { connect, ConnectedProps } from "react-redux";
 import PushUps from "./training/pushups";
 import Gym from "./training/gym";
+import StealTradeable from "./theft/steal-tradable";
+import { Tradeable } from "../inventory/types";
 
 interface StateProps {
   active: PlayerActionCategories;
@@ -68,7 +70,11 @@ class PlayerActions extends React.PureComponent<
       case PlayerActionCategories.General:
         return <ListGroup items={[{ item: <Sleep /> }]}></ListGroup>;
       case PlayerActionCategories.Theft:
-        return <ListGroup items={[{ item: <div>Steal</div> }]}></ListGroup>;
+        return (
+          <ListGroup
+            items={[{ item: <StealTradeable tradeable={Tradeable.Stamp} /> }]}
+          ></ListGroup>
+        );
       case PlayerActionCategories.Training:
         return <ListGroup items={trainingItems} />;
     }
