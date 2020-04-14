@@ -18,7 +18,6 @@ class Attributes extends React.PureComponent<AttributesProps> {
         fitness,
         combat,
         combatProgress,
-        notoriety,
         respect,
         respectProgress
       }

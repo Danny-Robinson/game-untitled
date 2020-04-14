@@ -20,11 +20,22 @@ class Inventory extends React.PureComponent<InventoryProps> {
             items={Object.keys(items).map((item) => ({
               item: <div>{item}</div>
             }))}
-          ></ListGroup>
+          />
         </Card>
-        <Card
-          title={`Tradeables: ${convertTradeablesToText(tradeables)}`}
-        ></Card>
+        <Card title="Currency">
+          <ListGroup
+            items={[
+              {
+                item: (
+                  <div>{`Tradeables: ${convertTradeablesToText(
+                    tradeables
+                  )}`}</div>
+                )
+              },
+              { item: <div>Commissary Cash</div> }
+            ]}
+          />
+        </Card>
       </Card>
     );
   }
