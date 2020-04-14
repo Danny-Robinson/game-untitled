@@ -3,4 +3,5 @@ export enum PlayerActionCategories {
   Theft = "Theft",
   Violence = "Violence",
   Training = "Training",
+  Work = "Work"
 }

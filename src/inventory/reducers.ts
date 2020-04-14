@@ -1,5 +1,10 @@
 import { AppActions } from "../redux-common/types";
-import { Inventory, ADD_ITEM, ADD_TRADEABLE } from "./types";
+import {
+  Inventory,
+  ADD_ITEM,
+  INCREMENT_TRADEABLE,
+  INCREMENT_CASH
+} from "./types";
 import { inventoryReducerDefaultState } from "../redux-common/default-store-state";
 
 export function inventory(
@@ -17,8 +22,10 @@ export function inventory(
             : 1
         }
       };
-    case ADD_TRADEABLE:
+    case INCREMENT_TRADEABLE:
       return { ...state, tradeables: state.tradeables + action.tradeables };
+    case INCREMENT_CASH:
+      return { ...state, cash: state.cash + action.cash };
     default:
       return state;
   }

@@ -19,6 +19,7 @@ export interface Equippable {
 export interface Inventory {
   items: { [name: string]: number };
   tradeables: number; //111 = 1 ramen, 1 cig, 1 stamp
+  cash: number;
 }
 
 export enum Tradeable {
@@ -53,10 +54,19 @@ export interface AddItemAction {
   item: Item;
 }
 
-export const ADD_TRADEABLE = "ADD_TRADEABLE";
-export interface AddTradeableAction {
-  type: typeof ADD_TRADEABLE;
+export const INCREMENT_TRADEABLE = "INCREMENT_TRADEABLE";
+export interface IncrementTradeableAction {
+  type: typeof INCREMENT_TRADEABLE;
   tradeables: number;
 }
 
-export type InventoryActions = AddItemAction | AddTradeableAction;
+export const INCREMENT_CASH = "INCREMENT_CASH";
+export interface IncrementCashAction {
+  type: typeof INCREMENT_CASH;
+  cash: number;
+}
+
+export type InventoryActions =
+  | AddItemAction
+  | IncrementTradeableAction
+  | IncrementCashAction;

@@ -11,7 +11,7 @@ export type InventoryProps = ConnectedProps<typeof connector>;
 class Inventory extends React.PureComponent<InventoryProps> {
   public render() {
     const {
-      inventory: { items, tradeables }
+      inventory: { items, tradeables, cash }
     } = this.props;
     return (
       <Card title="Inventory">
@@ -32,7 +32,7 @@ class Inventory extends React.PureComponent<InventoryProps> {
                   )}`}</div>
                 )
               },
-              { item: <div>Commissary Cash</div> }
+              { item: <div>Commissary Cash (CC): {cash}</div> }
             ]}
           />
         </Card>
