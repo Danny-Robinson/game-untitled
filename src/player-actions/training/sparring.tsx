@@ -16,7 +16,7 @@ export type AttributesProps = ConnectedProps<typeof connector>;
 class Sparring extends React.PureComponent<AttributesProps> {
   public render() {
     const {
-      attributes: { respect, fitness }
+      attributes: { respect, combat }
     } = this.props;
 
     return (
@@ -28,7 +28,7 @@ class Sparring extends React.PureComponent<AttributesProps> {
 
   private sparring = () => {
     const {
-      attributes: { fitness, combat }
+      attributes: { fitness }
     } = this.props;
 
     const {
