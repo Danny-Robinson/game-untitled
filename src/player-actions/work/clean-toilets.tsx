@@ -1,61 +1,48 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { alterAttribute } from "../../attributes/actions";
 import { decrementEnergy } from "../../resources/actions";
-import { AttributeNames } from "../../attributes/types";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
 import { addMessage } from "../../message-feed/actions";
 import { incrementHours } from "../../clock/actions";
+import { incrementCash } from "../../inventory/actions";
 import {
   attributesReducerDefaultState,
   resourceReducerDefaultState
 } from "../../redux-common/default-store-state";
 
-export type AttributesProps = ConnectedProps<typeof connector>;
+export type CleanToiletsProps = ConnectedProps<typeof connector>;
 
-class Sparring extends React.PureComponent<AttributesProps> {
+class CleanToilets extends React.PureComponent<CleanToiletsProps> {
   public render() {
-    const {
-      attributes: { respect }
-    } = this.props;
-
     return (
-      <Button primary onClick={this.sparring} disabled={respect < 10}>
-        Spar
+      <Button primary onClick={this.cleanToilets}>
+        Clean Toilets
       </Button>
     );
   }
 
-  private sparring = () => {
-    const {
-      attributes: { fitness }
-    } = this.props;
-
+  private cleanToilets = () => {
     const {
       resources: { energy }
     } = this.props;
 
-    const fitnessIncrease = 100 / Math.pow(2, fitness - 1);
-    const combatIncrease = 50;
     switch (true) {
-      case energy >= 65: {
-        this.props.alterAttribute(
-          fitnessIncrease,
-          AttributeNames.fitnessProgress
-        );
-        this.props.decrementEnergy(60);
-        this.props.incrementHours(3);
-        this.props.alterAttribute(
-          combatIncrease,
-          AttributeNames.combatProgress
+      case energy >= 10: {
+        const hoursSpent = 5;
+        const cashEarned = 5;
+        this.props.decrementEnergy(30);
+        this.props.incrementHours(hoursSpent);
+        this.props.incrementCash(cashEarned);
+        this.props.addMessage(
+          `You clean the toilets for ${hoursSpent} hours and earn ${cashEarned} CC`
         );
         break;
       }
 
-      case energy < 65: {
+      case energy < 30: {
         this.props.addMessage(
-          "You do not have enough energy to spar right now"
+          "You do not have enough energy to clean toilet right now"
         );
         break;
       }
@@ -72,10 +59,10 @@ export const mapState = (state: StoreState) => ({
 });
 
 const connector = connect(mapState, {
-  alterAttribute,
   decrementEnergy,
+  incrementCash,
   addMessage,
   incrementHours
 });
 
-export default connector(Sparring);
+export default connector(CleanToilets);

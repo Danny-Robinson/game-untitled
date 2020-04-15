@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { incrementMinutes } from "../../clock/actions";
 import { decrementEnergy } from "../../resources/actions";
 import { addMessage } from "../../message-feed/actions";
-import { addTradeable } from "../../inventory/actions";
+import { incrementTradeables } from "../../inventory/actions";
 
 import Button from "../../common/button";
 import { Tradeable, tradeableValue } from "../../inventory/types";
@@ -54,7 +54,7 @@ const connector = connect(mapState, {
   incrementMinutes,
   decrementEnergy,
   addMessage,
-  addTradeable
+  addTradeable: incrementTradeables
 });
 
 export default connector(StealTradeable);

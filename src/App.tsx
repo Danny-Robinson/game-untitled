@@ -12,6 +12,7 @@ import Attributes from "./attributes/attributes";
 import MessageFeed from "./message-feed/message-feed";
 import UserMenu from "./user-menu/user-menu";
 import Inventory from "./inventory/inventory";
+import Shop from "./shop/shop";
 
 function App() {
   return (
@@ -19,24 +20,23 @@ function App() {
       <Row className="justify-content-between align-items-center">
         <Column size={4}>
           <MessageFeed />
-        </Column>
-        <Column size={2} smallSize={6}>
-          <UserMenu />
-          <Clock />
-        </Column>
-      </Row>
-      <Row className="justify-content-between align-items-center">
-        <Column size={4}>
           <PlayerActions />
         </Column>
         <Column size={2} smallSize={6}>
           <Resources />
           <Attributes />
         </Column>
+        <Column size={2} smallSize={6}>
+          <Clock />
+          <UserMenu />
+        </Column>
       </Row>
       <Row>
-        <Column size={4}>
+        <Column>
           <Inventory />
+        </Column>
+        <Column>
+          <Shop />
         </Column>
       </Row>
       <GlobalTimer />

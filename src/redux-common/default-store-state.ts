@@ -26,5 +26,6 @@ export const attributesReducerDefaultState: Attributes = {
 
 export const inventoryReducerDefaultState: Inventory = {
   items: {},
-  tradeables: 0
+  tradeables: 0,
+  cash: 0
 };
