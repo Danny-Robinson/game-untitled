@@ -4,6 +4,7 @@ import { StoreState } from "../redux-common/store";
 import FitnessBar from "./attribute-bar";
 import CombatBar from "./attribute-bar";
 import RespectBar from "./attribute-bar";
+import NotorietyBar from "./attribute-bar";
 import Card from "../common/card";
 import ListGroup from "../common/list-group";
 import { attributesReducerDefaultState } from "../redux-common/default-store-state";
@@ -19,7 +20,8 @@ class Attributes extends React.PureComponent<AttributesProps> {
         combat,
         combatProgress,
         respect,
-        respectProgress
+        respectProgress,
+        notoriety
       }
     } = this.props;
 
@@ -38,6 +40,10 @@ class Attributes extends React.PureComponent<AttributesProps> {
             {
               item: <RespectBar attribute={respectProgress} />,
               subtitle: `Respect level: ${respect}`
+            },
+            {
+              item: <NotorietyBar attribute={notoriety * 20} />,
+              subtitle: `Notoriety: ${notoriety}`
             }
           ]}
         ></ListGroup>
