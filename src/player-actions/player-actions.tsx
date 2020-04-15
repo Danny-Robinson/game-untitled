@@ -34,39 +34,46 @@ class PlayerActions extends React.PureComponent<
     return (
       <Card title="Actions">
         {!paused && (
-          <Nav
+          <ListGroup
             items={[
               {
-                tabName: PlayerActionCategories.General,
-                clickFunction: () =>
-                  this.setActiveTab(PlayerActionCategories.General)
+                item: (
+                  <Nav
+                    items={[
+                      {
+                        tabName: PlayerActionCategories.General,
+                        clickFunction: () =>
+                          this.setActiveTab(PlayerActionCategories.General)
+                      },
+                      {
+                        tabName: PlayerActionCategories.Theft,
+                        clickFunction: () =>
+                          this.setActiveTab(PlayerActionCategories.Theft)
+                      },
+                      {
+                        tabName: PlayerActionCategories.Violence,
+                        clickFunction: () =>
+                          this.setActiveTab(PlayerActionCategories.Violence)
+                      },
+                      {
+                        tabName: PlayerActionCategories.Training,
+                        clickFunction: () =>
+                          this.setActiveTab(PlayerActionCategories.Training)
+                      },
+                      {
+                        tabName: PlayerActionCategories.Work,
+                        clickFunction: () =>
+                          this.setActiveTab(PlayerActionCategories.Work)
+                      }
+                    ]}
+                    active={this.state.active}
+                  />
+                )
               },
-              {
-                tabName: PlayerActionCategories.Theft,
-                clickFunction: () =>
-                  this.setActiveTab(PlayerActionCategories.Theft)
-              },
-              {
-                tabName: PlayerActionCategories.Violence,
-                clickFunction: () =>
-                  this.setActiveTab(PlayerActionCategories.Violence)
-              },
-              {
-                tabName: PlayerActionCategories.Training,
-                clickFunction: () =>
-                  this.setActiveTab(PlayerActionCategories.Training)
-              },
-              {
-                tabName: PlayerActionCategories.Work,
-                clickFunction: () =>
-                  this.setActiveTab(PlayerActionCategories.Work)
-              }
+              { item: this.renderActionGroup(this.state.active) }
             ]}
-            active={this.state.active}
-            disabled={[PlayerActionCategories.Violence]}
           />
         )}
-        {!paused && this.renderActionGroup(this.state.active)}
       </Card>
     );
   }
