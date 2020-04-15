@@ -9,21 +9,28 @@ export interface Attributes {
   mischief: number;
 }
 
-export const INCREMENT_FITNESS = "INCREMENT_FITNESS";
-export const DECREMENT_FITNESS = "DECREMENT_FITNESS";
+export enum AttributeNames {
+  Fitness = "Fitness",
+  FitnessProgress = "FitnessProgress",
+  Combat = "Combat",
+  CombatProgress = "CombatProgress",
+  Notoriety = "Notoriety",
+  Respect = "Respect",
+  RespectProgress = "RespectProgress",
+  Mischief = "Mischief"
+}
+
+export const ALTER_ATTRIBUTE = "ALTER_ATTRIBUTE";
+
 export const INCREMENT_COMBAT = "INCREMENT_COMBAT";
 export const DECREMENT_COMBAT = "DECREMENT_COMBAT";
 export const INCREMENT_RESPECT = "INCREMENT_RESPECT";
 export const DECREMENT_RESPECT = "DECREMENT_RESPECT";
 
-export interface IncrementFitnessAction {
-  type: typeof INCREMENT_FITNESS;
-  fitnessProgress: Attributes["fitnessProgress"];
-}
-
-export interface DecrementFitnessAction {
-  type: typeof DECREMENT_FITNESS;
-  fitnessProgress: Attributes["fitnessProgress"];
+export interface AlterAttributeAction {
+  type: typeof ALTER_ATTRIBUTE;
+  attributeChange: number;
+  attributeName: AttributeNames;
 }
 
 export interface IncrementCombatAction {
@@ -47,9 +54,8 @@ export interface DecrementRespectAction {
 }
 
 export type AttributeActionTypes =
-  | IncrementFitnessAction
-  | DecrementFitnessAction
   | IncrementCombatAction
   | DecrementCombatAction
   | IncrementRespectAction
-  | DecrementRespectAction;
+  | DecrementRespectAction
+  | AlterAttributeAction;

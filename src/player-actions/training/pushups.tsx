@@ -1,7 +1,8 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { incrementFitness } from "../../attributes/actions";
 import { decrementEnergy } from "../../resources/actions";
+import { alterAttribute } from "../../attributes/actions";
+import { AttributeNames } from "../../attributes/types";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
 import { addMessage } from "../../message-feed/actions";
@@ -34,7 +35,10 @@ class Pushups extends React.PureComponent<AttributesProps> {
     const fitnessIncrease = 20 / Math.pow(2, fitness - 1);
     switch (true) {
       case energy >= 10: {
-        this.props.incrementFitness(fitnessIncrease);
+        this.props.alterAttribute(
+          fitnessIncrease,
+          AttributeNames.FitnessProgress
+        );
         this.props.decrementEnergy(10);
         this.props.incrementHours(1);
         break;
@@ -59,10 +63,10 @@ export const mapState = (state: StoreState) => ({
 });
 
 const connector = connect(mapState, {
-  incrementFitness,
   decrementEnergy,
   addMessage,
-  incrementHours
+  incrementHours,
+  alterAttribute
 });
 
 export default connector(Pushups);
