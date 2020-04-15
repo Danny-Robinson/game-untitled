@@ -4,9 +4,7 @@ import {
   INCREMENT_FITNESS,
   INCREMENT_COMBAT,
   DECREMENT_FITNESS,
-  DECREMENT_COMBAT,
-  INCREMENT_RESPECT,
-  DECREMENT_RESPECT
+  DECREMENT_COMBAT
 } from "./types";
 import { attributesReducerDefaultState } from "../redux-common/default-store-state";
 
