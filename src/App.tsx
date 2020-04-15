@@ -12,6 +12,7 @@ import Attributes from "./attributes/attributes";
 import MessageFeed from "./message-feed/message-feed";
 import UserMenu from "./user-menu/user-menu";
 import Inventory from "./inventory/inventory";
+import Shop from "./shop/shop";
 
 function App() {
   return (
@@ -34,7 +35,9 @@ function App() {
         <Column>
           <Inventory />
         </Column>
-        <Column />
+        <Column>
+          <Shop />
+        </Column>
       </Row>
       <GlobalTimer />
     </Container>

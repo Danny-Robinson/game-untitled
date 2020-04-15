@@ -2,7 +2,7 @@ import { Attributes } from "../attributes/types";
 
 export type Item = {
   name: string;
-  buyPice: number;
+  buyPrice: number;
   sellPrice: number;
   size: number;
 } & (Consumable | Equippable);
