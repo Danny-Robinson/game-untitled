@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { incrementCombat, alterAttribute } from "../../attributes/actions";
+import { alterAttribute } from "../../attributes/actions";
 import { decrementEnergy } from "../../resources/actions";
 import { AttributeNames } from "../../attributes/types";
 import { StoreState } from "../../redux-common/store";
@@ -37,15 +37,19 @@ class Sparring extends React.PureComponent<AttributesProps> {
     } = this.props;
 
     const fitnessIncrease = 100 / Math.pow(2, fitness - 1);
+    const combatIncrease = 50;
     switch (true) {
       case energy >= 65: {
         this.props.alterAttribute(
           fitnessIncrease,
-          AttributeNames.FitnessProgress
+          AttributeNames.fitnessProgress
         );
         this.props.decrementEnergy(60);
         this.props.incrementHours(3);
-        this.props.incrementCombat(50);
+        this.props.alterAttribute(
+          combatIncrease,
+          AttributeNames.combatProgress
+        );
         break;
       }
 
@@ -71,8 +75,7 @@ const connector = connect(mapState, {
   alterAttribute,
   decrementEnergy,
   addMessage,
-  incrementHours,
-  incrementCombat
+  incrementHours
 });
 
 export default connector(Sparring);

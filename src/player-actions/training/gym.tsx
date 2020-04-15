@@ -41,7 +41,7 @@ class Gym extends React.PureComponent<AttributesProps> {
       case energy >= 65: {
         this.props.alterAttribute(
           fitnessIncrease,
-          AttributeNames.FitnessProgress
+          AttributeNames.fitnessProgress
         );
         this.props.decrementEnergy(60);
         this.props.incrementHours(3);

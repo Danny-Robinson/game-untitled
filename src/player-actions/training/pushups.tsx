@@ -37,7 +37,7 @@ class Pushups extends React.PureComponent<AttributesProps> {
       case energy >= 10: {
         this.props.alterAttribute(
           fitnessIncrease,
-          AttributeNames.FitnessProgress
+          AttributeNames.fitnessProgress
         );
         this.props.decrementEnergy(10);
         this.props.incrementHours(1);

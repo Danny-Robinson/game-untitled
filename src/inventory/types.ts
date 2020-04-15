@@ -1,4 +1,4 @@
-import { Attributes } from "../attributes/types";
+import { AttributeNames } from "../attributes/types";
 
 export type Item = {
   name: string;
@@ -34,7 +34,7 @@ export const tradeableValue = {
 };
 
 export interface EquippedBonus {
-  attribute: Attributes;
+  attribute: AttributeNames;
   amount: number;
 }
 
