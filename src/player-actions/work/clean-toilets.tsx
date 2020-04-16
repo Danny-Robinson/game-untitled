@@ -5,7 +5,7 @@ import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
 import { addMessage } from "../../message-feed/actions";
 import { incrementHours } from "../../clock/actions";
-import { incrementCash } from "../../inventory/actions";
+import { alterCash } from "../../inventory/actions";
 import {
   attributesReducerDefaultState,
   resourceReducerDefaultState
@@ -60,7 +60,7 @@ export const mapState = (state: StoreState) => ({
 
 const connector = connect(mapState, {
   decrementEnergy,
-  incrementCash,
+  incrementCash: alterCash,
   addMessage,
   incrementHours
 });

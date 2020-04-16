@@ -1,7 +1,7 @@
 import React from "react";
 
 interface OwnProps {
-  title: string;
+  title?: string;
   className?: string;
 }
 
@@ -12,7 +12,7 @@ class Card extends React.PureComponent<CardProp> {
     const { title, children, className = "" } = this.props;
     return (
       <div className={`card ${className}`}>
-        <div className="card-header">{title}</div>
+        {title && <div className="card-header">{title}</div>}
         {children}
       </div>
     );
