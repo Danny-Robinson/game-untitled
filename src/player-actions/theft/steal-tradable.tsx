@@ -5,18 +5,13 @@ import { decrementEnergy } from "../../resources/actions";
 import { addMessage } from "../../message-feed/actions";
 import { incrementTradeables } from "../../inventory/actions";
 import Button from "../../common/button";
-import {
-  AttributeNames,
-  Attributes,
-  AlterAttributeAction
-} from "../../attributes/types";
+import { AttributeNames } from "../../attributes/types";
 import { Tradeable, tradeableValue } from "../../inventory/types";
 import { StoreState } from "../../redux-common/store";
 import {
   resourceReducerDefaultState,
   attributesReducerDefaultState
 } from "../../redux-common/default-store-state";
-import { attributes } from "../../attributes/reducers";
 import { alterAttribute } from "../../attributes/actions";
 
 export interface OwnProps {

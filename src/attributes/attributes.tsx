@@ -4,10 +4,10 @@ import { StoreState } from "../redux-common/store";
 import FitnessBar from "./attribute-bar";
 import CombatBar from "./attribute-bar";
 import RespectBar from "./attribute-bar";
-import NotorietyBar from "./attribute-bar";
 import Card from "../common/card";
 import ListGroup from "../common/list-group";
 import { attributesReducerDefaultState } from "../redux-common/default-store-state";
+import StarMeter from "./star-meter";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
@@ -42,8 +42,8 @@ class Attributes extends React.PureComponent<AttributesProps> {
               subtitle: `Respect level: ${respect}`
             },
             {
-              item: <NotorietyBar attribute={notoriety * 20} />,
-              subtitle: `Notoriety: ${notoriety}`
+              item: <StarMeter value={notoriety} />,
+              subtitle: `Notoriety: ${notoriety / 2}`
             }
           ]}
         ></ListGroup>
