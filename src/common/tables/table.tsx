@@ -9,8 +9,10 @@ class Table extends React.PureComponent<OwnProps> {
       <table className="table">
         <thead className="thead-light">
           <tr>
-            {this.props.headers.map((header) => (
-              <th scope="col">{header}</th>
+            {this.props.headers.map((header, index) => (
+              <th scope="col" key={`table-header-${index}-${header}`}>
+                {header}
+              </th>
             ))}
           </tr>
         </thead>

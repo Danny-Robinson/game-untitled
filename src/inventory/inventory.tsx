@@ -5,6 +5,9 @@ import { StoreState } from "../redux-common/store";
 import { ConnectedProps, connect } from "react-redux";
 import { inventoryReducerDefaultState } from "../redux-common/default-store-state";
 import { convertTradeablesToText } from "./helpers";
+import Table from "../common/tables/table";
+import InventoryItemRow from "./inventory-item-row";
+import { itemList, ItemNameList } from "./items";
 
 export type InventoryProps = ConnectedProps<typeof connector>;
 
@@ -15,12 +18,20 @@ class Inventory extends React.PureComponent<InventoryProps> {
     } = this.props;
     return (
       <Card title="Inventory">
-        <Card title="Items">
-          <ListGroup
-            items={Object.keys(items).map((item) => ({
-              item: <div>{item}</div>
-            }))}
-          />
+        <Card>
+          <Table headers={["Item", "Quantity", "Weight", ""]}>
+            {Object.keys(items).map((item) => {
+              if (items[item as ItemNameList]) {
+                return (
+                  <InventoryItemRow
+                    item={itemList[item as ItemNameList]}
+                    quantity={items[item as ItemNameList]}
+                    key={`inv-item-row-${item}`}
+                  />
+                );
+              } else return null;
+            })}
+          </Table>
         </Card>
         <Card title="Currency">
           <ListGroup

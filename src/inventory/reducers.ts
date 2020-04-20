@@ -3,12 +3,13 @@ import {
   Inventory,
   ADD_ITEM,
   INCREMENT_TRADEABLE,
-  INCREMENT_CASH
+  ALTER_CASH,
+  REMOVE_ITEM
 } from "./types";
 import { inventoryReducerDefaultState } from "../redux-common/default-store-state";
 
 export function inventory(
-  state = inventoryReducerDefaultState,
+  state: Inventory = inventoryReducerDefaultState,
   action: AppActions
 ): Inventory {
   switch (action.type) {
@@ -22,9 +23,19 @@ export function inventory(
             : 1
         }
       };
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [action.item.name]: state.items[action.item.name]
+            ? state.items[action.item.name] - 1
+            : 0
+        }
+      };
     case INCREMENT_TRADEABLE:
       return { ...state, tradeables: state.tradeables + action.tradeables };
-    case INCREMENT_CASH:
+    case ALTER_CASH:
       return { ...state, cash: state.cash + action.cash };
     default:
       return state;

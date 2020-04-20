@@ -1,8 +1,18 @@
 import { Item } from "./types";
 
+export enum ItemName {
+  ChocolateBar = "Chocolate Bar"
+}
+
+export type ItemNameList = ItemName.ChocolateBar;
+
 export const chocolateBar: Item = {
-  name: "Chocolate Bar",
+  name: ItemName.ChocolateBar,
   buyPrice: 10,
   sellPrice: 3,
-  size: 1
+  weight: 1
+};
+
+export const itemList: { [N in ItemNameList]: Item } = {
+  [ItemName.ChocolateBar]: chocolateBar
 };

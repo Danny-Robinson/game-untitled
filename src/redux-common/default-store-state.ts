@@ -2,6 +2,7 @@ import { Resources } from "../resources/types";
 import { Clock } from "../clock/types";
 import { Attributes } from "../attributes/types";
 import { Inventory } from "../inventory/types";
+import { ItemName } from "../inventory/items";
 
 export const MAX_ENERGY: number = 100;
 export const MIN_ENERGY: number = 0;
@@ -25,7 +26,7 @@ export const attributesReducerDefaultState: Attributes = {
 };
 
 export const inventoryReducerDefaultState: Inventory = {
-  items: {},
+  items: { [ItemName.ChocolateBar]: 0 },
   tradeables: 0,
   cash: 0
 };
