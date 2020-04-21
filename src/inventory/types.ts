@@ -1,22 +1,16 @@
-
 import { AttributeNames } from "../attributes/types";
 import { ItemName, ItemNameList } from "./items";
+import { AppActions } from "../redux-common/types";
 
 export type Item = {
   name: ItemName;
   buyPrice: number;
   sellPrice: number;
   weight: number;
-} & (Consumable | Equippable);
-
-export interface Consumable {
-  onUseEffect?: () => void;
-}
-
-export interface Equippable {
-  slot: ReadonlyArray<EquipableSlot>;
-  bonus: ReadonlyArray<EquippedBonus>;
-}
+  onUseEffect?: AppActions[];
+  slot?: ReadonlyArray<EquipableSlot>;
+  bonus?: ReadonlyArray<EquippedBonus>;
+};
 
 export interface Inventory {
   items: { [N in ItemNameList]: number };
@@ -59,7 +53,7 @@ export interface AddItemAction {
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export interface RemoveItemAction {
   type: typeof REMOVE_ITEM;
-  item: Item;
+  item: ItemName;
 }
 
 export const INCREMENT_TRADEABLE = "INCREMENT_TRADEABLE";
