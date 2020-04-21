@@ -12,7 +12,6 @@ export function resources(
 ): Resources {
   switch (action.type) {
     case ALTER_ENERGY: {
-      console.log(action.energy);
       const newEnergy = state.energy + action.energy;
       const energy =
         newEnergy >= MAX_ENERGY
@@ -20,7 +19,7 @@ export function resources(
           : newEnergy < MIN_ENERGY
           ? MIN_ENERGY
           : newEnergy;
-      console.log(energy);
+
       return { ...state, energy };
     }
 
