@@ -4,11 +4,15 @@ import { incrementMinutes } from "../../clock/actions";
 import { decrementEnergy } from "../../resources/actions";
 import { addMessage } from "../../message-feed/actions";
 import { incrementTradeables } from "../../inventory/actions";
-
 import Button from "../../common/button";
+import { AttributeNames } from "../../attributes/types";
 import { Tradeable, tradeableValue } from "../../inventory/types";
 import { StoreState } from "../../redux-common/store";
-import { resourceReducerDefaultState } from "../../redux-common/default-store-state";
+import {
+  resourceReducerDefaultState,
+  attributesReducerDefaultState
+} from "../../redux-common/default-store-state";
+import { alterAttribute } from "../../attributes/actions";
 
 export interface OwnProps {
   tradeable: Tradeable;
@@ -32,8 +36,10 @@ class StealTradeable extends React.PureComponent<StealTradeableProps> {
     } = this.props;
     const minutes = 15;
     const energyCost = 10;
+    const notoriety = 1;
 
     if (energy > 15) {
+      this.props.alterAttribute(notoriety, AttributeNames.notoriety);
       this.props.incrementMinutes(minutes);
       this.props.decrementEnergy(energyCost);
       this.props.addTradeable(tradeableValue[tradeable]);
@@ -47,13 +53,15 @@ class StealTradeable extends React.PureComponent<StealTradeableProps> {
 }
 
 export const mapState = (state: StoreState) => ({
-  resources: state ? state.resources : resourceReducerDefaultState
+  resources: state ? state.resources : resourceReducerDefaultState,
+  attributes: state ? state.attributes : attributesReducerDefaultState
 });
 
 const connector = connect(mapState, {
   incrementMinutes,
   decrementEnergy,
   addMessage,
+  alterAttribute,
   addTradeable: incrementTradeables
 });
 

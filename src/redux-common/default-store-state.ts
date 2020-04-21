@@ -21,7 +21,7 @@ export const attributesReducerDefaultState: Attributes = {
   combatProgress: 0,
   respect: 1,
   respectProgress: 0,
-  notoriety: 1,
+  notoriety: 0,
   mischief: 1
 };
 

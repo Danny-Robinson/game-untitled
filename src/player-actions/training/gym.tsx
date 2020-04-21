@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { incrementFitness } from "../../attributes/actions";
 import { decrementEnergy } from "../../resources/actions";
+import { alterAttribute } from "../../attributes/actions";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
 import { addMessage } from "../../message-feed/actions";
@@ -10,6 +10,7 @@ import {
   attributesReducerDefaultState,
   resourceReducerDefaultState
 } from "../../redux-common/default-store-state";
+import { AttributeNames } from "../../attributes/types";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
@@ -38,7 +39,10 @@ class Gym extends React.PureComponent<AttributesProps> {
     const fitnessIncrease = 100 / Math.pow(2, fitness - 1);
     switch (true) {
       case energy >= 65: {
-        this.props.incrementFitness(fitnessIncrease);
+        this.props.alterAttribute(
+          fitnessIncrease,
+          AttributeNames.fitnessProgress
+        );
         this.props.decrementEnergy(60);
         this.props.incrementHours(3);
         break;
@@ -63,10 +67,10 @@ export const mapState = (state: StoreState) => ({
 });
 
 const connector = connect(mapState, {
-  incrementFitness,
   decrementEnergy,
   addMessage,
-  incrementHours
+  incrementHours,
+  alterAttribute
 });
 
 export default connector(Gym);

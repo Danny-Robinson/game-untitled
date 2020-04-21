@@ -7,6 +7,7 @@ import RespectBar from "./attribute-bar";
 import Card from "../common/card";
 import ListGroup from "../common/list-group";
 import { attributesReducerDefaultState } from "../redux-common/default-store-state";
+import StarMeter from "./star-meter";
 
 export type AttributesProps = ConnectedProps<typeof connector>;
 
@@ -19,7 +20,8 @@ class Attributes extends React.PureComponent<AttributesProps> {
         combat,
         combatProgress,
         respect,
-        respectProgress
+        respectProgress,
+        notoriety
       }
     } = this.props;
 
@@ -38,6 +40,10 @@ class Attributes extends React.PureComponent<AttributesProps> {
             {
               item: <RespectBar attribute={respectProgress} />,
               subtitle: `Respect level: ${respect}`
+            },
+            {
+              item: <StarMeter value={notoriety} />,
+              subtitle: `Notoriety: ${notoriety / 2}`
             }
           ]}
         ></ListGroup>
