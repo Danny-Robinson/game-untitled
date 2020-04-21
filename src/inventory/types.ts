@@ -1,10 +1,12 @@
+
 import { AttributeNames } from "../attributes/types";
+import { ItemName, ItemNameList } from "./items";
 
 export type Item = {
-  name: string;
+  name: ItemName;
   buyPrice: number;
   sellPrice: number;
-  size: number;
+  weight: number;
 } & (Consumable | Equippable);
 
 export interface Consumable {
@@ -17,7 +19,7 @@ export interface Equippable {
 }
 
 export interface Inventory {
-  items: { [name: string]: number };
+  items: { [N in ItemNameList]: number };
   tradeables: number; //111 = 1 ramen, 1 cig, 1 stamp
   cash: number;
 }
@@ -54,19 +56,26 @@ export interface AddItemAction {
   item: Item;
 }
 
+export const REMOVE_ITEM = "REMOVE_ITEM";
+export interface RemoveItemAction {
+  type: typeof REMOVE_ITEM;
+  item: Item;
+}
+
 export const INCREMENT_TRADEABLE = "INCREMENT_TRADEABLE";
 export interface IncrementTradeableAction {
   type: typeof INCREMENT_TRADEABLE;
   tradeables: number;
 }
 
-export const INCREMENT_CASH = "INCREMENT_CASH";
+export const ALTER_CASH = "ALTER_CASH";
 export interface IncrementCashAction {
-  type: typeof INCREMENT_CASH;
+  type: typeof ALTER_CASH;
   cash: number;
 }
 
 export type InventoryActions =
   | AddItemAction
+  | RemoveItemAction
   | IncrementTradeableAction
   | IncrementCashAction;
