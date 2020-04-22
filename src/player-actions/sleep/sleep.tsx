@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { incrementHours } from "../../clock/actions";
-import { incrementEnergy } from "../../resources/actions";
+import { alterEnergy } from "../../resources/actions";
 import { addMessage } from "../../message-feed/actions";
 
 import Button from "../../common/button";
@@ -21,7 +21,7 @@ class Sleep extends React.PureComponent<ResourcesProps> {
     const hours = 8;
     const energy = 100;
     this.props.incrementHours(hours);
-    this.props.incrementEnergy(energy);
+    this.props.alterEnergy(energy);
     this.props.addMessage(
       `You slept for ${hours} hours and regained ${energy} energy`
     );
@@ -30,7 +30,7 @@ class Sleep extends React.PureComponent<ResourcesProps> {
 
 const connector = connect(undefined, {
   incrementHours,
-  incrementEnergy,
+  alterEnergy,
   addMessage
 });
 

@@ -2,17 +2,11 @@ export interface Resources {
   energy: number;
 }
 
-export const INCREMENT_ENERGY = "INCREMENT_ENERGY";
-export const DECREMENT_ENERGY = "DECREMENT_ENERGY";
+export const ALTER_ENERGY = "ALTER_ENERGY";
 
-export interface IncrementEnergyAction {
-  type: typeof INCREMENT_ENERGY;
+export interface AlterEnergyAction {
+  type: typeof ALTER_ENERGY;
   energy: Resources["energy"];
 }
 
-export interface DecrementEnergyAction {
-  type: typeof DECREMENT_ENERGY;
-  energy: Resources["energy"];
-}
-
-export type ResourceActionTypes = IncrementEnergyAction | DecrementEnergyAction;
+export type ResourceActionTypes = AlterEnergyAction;
