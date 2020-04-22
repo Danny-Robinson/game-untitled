@@ -11,7 +11,7 @@ class AttributeBar extends React.PureComponent<AttributeBarProps> {
   public render() {
     const { attribute } = this.props;
 
-    return <ProgressBar progress={attribute} />;
+    return <ProgressBar progress_cap={100} progress={attribute} />;
   }
 }
 
