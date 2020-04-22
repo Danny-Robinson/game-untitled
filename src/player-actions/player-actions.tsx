@@ -12,6 +12,8 @@ import Gym from "./training/gym";
 import Sparring from "./training/sparring";
 import StealTradeable from "./theft/steal-tradable";
 import { Tradeable } from "../inventory/types";
+import InitiateFight from "./violence/initiate-fight";
+import { crackFiend } from "./violence/enemies";
 
 interface StateProps {
   active: PlayerActionCategories;
@@ -97,6 +99,10 @@ class PlayerActions extends React.PureComponent<
         return <ListGroup items={trainingItems} />;
       case PlayerActionCategories.Work:
         return <ListGroup items={[{ item: <CleanToilets /> }]} />;
+      case PlayerActionCategories.Violence:
+        return (
+          <ListGroup items={[{ item: <InitiateFight enemy={crackFiend} /> }]} />
+        );
     }
   };
 

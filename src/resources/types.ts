@@ -1,5 +1,6 @@
 export interface Resources {
   energy: number;
+  health: number;
 }
 
 export const INCREMENT_ENERGY = "INCREMENT_ENERGY";
