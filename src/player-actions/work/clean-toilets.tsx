@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { decrementEnergy } from "../../resources/actions";
+import { alterEnergy } from "../../resources/actions";
 import { StoreState } from "../../redux-common/store";
 import Button from "../../common/button";
 import { addMessage } from "../../message-feed/actions";
@@ -31,7 +31,7 @@ class CleanToilets extends React.PureComponent<CleanToiletsProps> {
       case energy >= 10: {
         const hoursSpent = 5;
         const cashEarned = 5;
-        this.props.decrementEnergy(30);
+        this.props.alterEnergy(-30);
         this.props.incrementHours(hoursSpent);
         this.props.incrementCash(cashEarned);
         this.props.addMessage(
@@ -59,7 +59,7 @@ export const mapState = (state: StoreState) => ({
 });
 
 const connector = connect(mapState, {
-  decrementEnergy,
+  alterEnergy,
   incrementCash: alterCash,
   addMessage,
   incrementHours

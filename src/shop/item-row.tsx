@@ -54,7 +54,7 @@ class ItemRow extends React.PureComponent<ItemRowProps> {
     } = this.props;
 
     if (items[item.name] > 0) {
-      removeItem(item);
+      removeItem(item.name);
       alterCash(item.sellPrice);
       addMessage(`You sold a ${item.name} for ${item.sellPrice} CC`);
     } else {

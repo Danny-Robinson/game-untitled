@@ -28,8 +28,8 @@ export function inventory(
         ...state,
         items: {
           ...state.items,
-          [action.item.name]: state.items[action.item.name]
-            ? state.items[action.item.name] - 1
+          [action.item]: state.items[action.item]
+            ? state.items[action.item] - 1
             : 0
         }
       };
