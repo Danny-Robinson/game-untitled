@@ -1,9 +1,9 @@
 import { AppActions } from "../redux-common/types";
-import { Resources, INCREMENT_ENERGY, DECREMENT_ENERGY } from "./types";
+import { Resources, ALTER_ENERGY, ALTER_HEALTH } from "./types";
 import {
   resourceReducerDefaultState,
-  MAX_ENERGY,
-  MIN_ENERGY
+  MIN_ENERGY,
+  MIN_HEALTH
 } from "../redux-common/default-store-state";
 
 export function resources(
@@ -11,21 +11,27 @@ export function resources(
   action: AppActions
 ): Resources {
   switch (action.type) {
-    case INCREMENT_ENERGY: {
+    case ALTER_ENERGY:
+      const newEnergy = state.energy + action.energy;
       const energy =
-        state.energy + action.energy > MAX_ENERGY
-          ? MAX_ENERGY
-          : state.energy + action.energy;
-      return { ...state, energy };
-    }
-
-    case DECREMENT_ENERGY: {
-      const energy =
-        state.energy - action.energy < MIN_ENERGY
+        newEnergy >= state.max_energy
+          ? state.max_energy
+          : newEnergy < MIN_ENERGY
           ? MIN_ENERGY
-          : state.energy - action.energy;
+          : newEnergy;
+
       return { ...state, energy };
-    }
+
+    case ALTER_HEALTH:
+      const newHealth = state.health + action.health;
+      const health =
+        newHealth >= state.max_health
+          ? state.max_health
+          : newHealth < MIN_HEALTH
+          ? MIN_HEALTH
+          : newHealth;
+
+      return { ...state, health };
 
     default:
       return state;

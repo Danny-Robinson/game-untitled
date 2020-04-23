@@ -13,6 +13,9 @@ import Sparring from "./training/sparring";
 import StealTradeable from "./theft/steal-tradable";
 import { Tradeable } from "../inventory/types";
 import { attributesReducerDefaultState } from "../redux-common/default-store-state";
+import InitiateFight from "./violence/initiate-fight";
+import { crackFiend } from "./violence/enemies";
+
 
 interface StateProps {
   active: PlayerActionCategories;
@@ -111,6 +114,10 @@ class PlayerActions extends React.PureComponent<
         break;
       case PlayerActionCategories.Work:
         return <ListGroup items={[{ item: <CleanToilets /> }]} />;
+      case PlayerActionCategories.Violence:
+        return (
+          <ListGroup items={[{ item: <InitiateFight enemy={crackFiend} /> }]} />
+        );
     }
   };
 

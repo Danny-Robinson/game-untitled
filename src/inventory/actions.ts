@@ -6,6 +6,7 @@ import {
   Item,
   REMOVE_ITEM
 } from "./types";
+import { ItemName } from "./items";
 
 export const incrementTradeables = (tradeables: number): AppActions => ({
   type: INCREMENT_TRADEABLE,
@@ -22,7 +23,7 @@ export const addItem = (item: Item): AppActions => ({
   item
 });
 
-export const removeItem = (item: Item): AppActions => ({
+export const removeItem = (item: ItemName): AppActions => ({
   type: REMOVE_ITEM,
   item
 });

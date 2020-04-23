@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { incrementMinutes } from "../../clock/actions";
-import { decrementEnergy } from "../../resources/actions";
+import { alterEnergy } from "../../resources/actions";
 import { addMessage } from "../../message-feed/actions";
 import { incrementTradeables } from "../../inventory/actions";
 import Button from "../../common/button";
@@ -41,7 +41,7 @@ class StealTradeable extends React.PureComponent<StealTradeableProps> {
     if (energy > 15) {
       this.props.alterAttribute(notoriety, AttributeNames.notoriety);
       this.props.incrementMinutes(minutes);
-      this.props.decrementEnergy(energyCost);
+      this.props.alterEnergy(-energyCost);
       this.props.addTradeable(tradeableValue[tradeable]);
       this.props.addMessage(`You stole a ${tradeable}`);
     } else {
@@ -59,7 +59,7 @@ export const mapState = (state: StoreState) => ({
 
 const connector = connect(mapState, {
   incrementMinutes,
-  decrementEnergy,
+  alterEnergy,
   addMessage,
   alterAttribute,
   addTradeable: incrementTradeables
