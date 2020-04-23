@@ -12,8 +12,10 @@ import Gym from "./training/gym";
 import Sparring from "./training/sparring";
 import StealTradeable from "./theft/steal-tradable";
 import { Tradeable } from "../inventory/types";
+import { attributesReducerDefaultState } from "../redux-common/default-store-state";
 import InitiateFight from "./violence/initiate-fight";
 import { crackFiend } from "./violence/enemies";
+
 
 interface StateProps {
   active: PlayerActionCategories;
@@ -81,11 +83,11 @@ class PlayerActions extends React.PureComponent<
   }
 
   private renderActionGroup = (activeTab: PlayerActionCategories) => {
-    const trainingItems = [
-      { item: <PushUps /> },
-      { item: <Gym /> },
-      { item: <Sparring /> }
-    ];
+    const { respect } = this.props.attributes;
+    const pushUps = { item: <PushUps /> };
+    const gym = { item: <Gym /> };
+    const sparring = { item: <Sparring /> };
+
     switch (activeTab) {
       case PlayerActionCategories.General:
         return <ListGroup items={[{ item: <Sleep /> }]} />;
@@ -96,7 +98,20 @@ class PlayerActions extends React.PureComponent<
           />
         );
       case PlayerActionCategories.Training:
-        return <ListGroup items={trainingItems} />;
+        switch (true) {
+          case respect < 5: {
+            return <ListGroup items={[pushUps]} />;
+          }
+          case respect < 10: {
+            return <ListGroup items={[pushUps, gym]} />;
+          }
+          case respect >= 10: {
+            return <ListGroup items={[pushUps, gym, sparring]} />;
+          }
+          default:
+            break;
+        }
+        break;
       case PlayerActionCategories.Work:
         return <ListGroup items={[{ item: <CleanToilets /> }]} />;
       case PlayerActionCategories.Violence:
@@ -110,7 +125,8 @@ class PlayerActions extends React.PureComponent<
     this.setState({ active: tab });
 }
 const mapState = (state: StoreState) => ({
-  paused: state?.paused
+  paused: state?.paused,
+  attributes: state ? state.attributes : attributesReducerDefaultState
 });
 
 const connector = connect(mapState);
