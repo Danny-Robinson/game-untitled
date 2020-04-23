@@ -3,28 +3,31 @@ import ProgressBar from "../common/progress-bar";
 
 interface OwnProps {
   resource: number;
+  resource_max: number;
 }
 
 export type ResourceBarProps = OwnProps;
 
 class ResourceBar extends React.PureComponent<ResourceBarProps> {
   public render() {
-    const { resource } = this.props;
+    const { resource, resource_max } = this.props;
 
     return (
       <ProgressBar
         progress={resource}
-        colour={this.getColour(resource)}
+        progress_cap={resource_max}
+        colour={this.getColour(resource, resource_max)}
         showProgressValue
       />
     );
   }
 
-  private getColour = (resource: number) => {
+  private getColour = (resource: number, resource_max: number) => {
+    const resource_percentage = (resource / resource_max) * 100;
     switch (true) {
-      case resource <= 20:
+      case resource_percentage <= 20:
         return "bg-danger";
-      case resource <= 60:
+      case resource_percentage <= 60:
         return "bg-warning";
       default:
         return "bg-success";

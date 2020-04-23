@@ -11,7 +11,7 @@ export type ResourcesProps = ConnectedProps<typeof connector>;
 class Resources extends React.PureComponent<ResourcesProps> {
   public render() {
     const {
-      resources: { energy }
+      resources: { energy, max_energy, health, max_health }
     } = this.props;
 
     return (
@@ -19,8 +19,12 @@ class Resources extends React.PureComponent<ResourcesProps> {
         <ListGroup
           items={[
             {
-              item: <ResourceBar resource={energy} />,
+              item: <ResourceBar resource={energy} resource_max={max_energy} />,
               subtitle: "Energy"
+            },
+            {
+              item: <ResourceBar resource={health} resource_max={max_health} />,
+              subtitle: "Health"
             }
           ]}
         ></ListGroup>

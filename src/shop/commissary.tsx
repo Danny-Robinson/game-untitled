@@ -1,6 +1,6 @@
 import Table from "../common/tables/table";
 import React from "react";
-import { chocolateBar } from "../inventory/items";
+import { chocolateBar, bandage } from "../inventory/items";
 import ItemRow from "./item-row";
 
 class Commissary extends React.PureComponent {
@@ -8,6 +8,7 @@ class Commissary extends React.PureComponent {
     return (
       <Table headers={["Item", "Buy Price (CC)", "Sell Price (CC)", "", ""]}>
         <ItemRow item={chocolateBar} />
+        <ItemRow item={bandage} />
       </Table>
     );
   }
