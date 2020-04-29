@@ -4,6 +4,7 @@ import * as resourcesReducer from "../resources/reducers";
 import * as attributesReducer from "../attributes/reducers";
 import * as messagesReducer from "../message-feed/reducers";
 import * as inventoryReducer from "../inventory/reducers";
+import * as violenceReducer from "../player-actions/violence/reducers";
 import { AppActions, CLEAR_STORE } from "./types";
 import { loadState, saveState } from "./localstorage";
 import { throttle } from "lodash";
@@ -14,7 +15,8 @@ const appReducer = combineReducers({
   ...resourcesReducer,
   ...attributesReducer,
   ...messagesReducer,
-  ...inventoryReducer
+  ...inventoryReducer,
+  ...violenceReducer
 });
 
 export const rootReducer = (state: StoreState, action: AppActions) => {

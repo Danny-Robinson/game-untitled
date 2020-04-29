@@ -3,6 +3,7 @@ import { Clock } from "../clock/types";
 import { Attributes } from "../attributes/types";
 import { Inventory } from "../inventory/types";
 import { ItemName } from "../inventory/items";
+import { SelectedCombatActions } from "../player-actions/violence/types";
 
 export const DEFAULT_MAX_ENERGY: number = 100;
 export const DEFAULT_MAX_HEALTH: number = 100;
@@ -37,4 +38,9 @@ export const inventoryReducerDefaultState: Inventory = {
   items: { [ItemName.ChocolateBar]: 0, [ItemName.Bandage]: 0 },
   tradeables: 0,
   cash: 0
+};
+
+export const selectedCombatActionsReducerDefaultState: SelectedCombatActions = {
+  playerAction: null,
+  enemyAction: null
 };

@@ -6,16 +6,21 @@ import Card from "../common/card";
 import ListGroup from "../common/list-group";
 import { resourceReducerDefaultState } from "../redux-common/default-store-state";
 
-export type ResourcesProps = ConnectedProps<typeof connector>;
+export interface OwnProps {
+  player: boolean;
+}
+
+export type ResourcesProps = ConnectedProps<typeof connector> & OwnProps;
 
 class Resources extends React.PureComponent<ResourcesProps> {
   public render() {
     const {
-      resources: { energy, max_energy, health, max_health }
+      resources: { energy, max_energy, health, max_health },
+      player
     } = this.props;
 
     return (
-      <Card title="Resources">
+      <Card title={`${!player ? "Enemy " : ""}Resources`}>
         <ListGroup
           items={[
             {
@@ -33,8 +38,13 @@ class Resources extends React.PureComponent<ResourcesProps> {
   }
 }
 
-export const mapState = (state: StoreState) => ({
-  resources: state ? state.resources : resourceReducerDefaultState
+export const mapState = (state: StoreState, props: OwnProps) => ({
+  resources:
+    state && props.player
+      ? state.resources
+      : state && !props.player
+      ? state.enemyResources
+      : resourceReducerDefaultState
 });
 
 const connector = connect(mapState);
