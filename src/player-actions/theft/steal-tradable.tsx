@@ -42,7 +42,7 @@ class StealTradeable extends React.PureComponent<StealTradeableProps> {
       this.props.alterAttribute(notoriety, AttributeNames.notoriety);
       this.props.incrementMinutes(minutes);
       this.props.alterEnergy(-energyCost);
-      this.props.addTradeable(tradeableValue[tradeable]);
+      this.props.incrementTradeables(tradeableValue[tradeable]);
       this.props.addMessage(`You stole a ${tradeable}`);
     } else {
       this.props.addMessage(
@@ -62,7 +62,7 @@ const connector = connect(mapState, {
   alterEnergy,
   addMessage,
   alterAttribute,
-  addTradeable: incrementTradeables
+  incrementTradeables
 });
 
 export default connector(StealTradeable);

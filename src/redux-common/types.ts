@@ -3,6 +3,7 @@ import { ResourceActionTypes as ResourceActions } from "../resources/types";
 import { AttributeActionTypes as AttributeActions } from "../attributes/types";
 import { MessageFeedActionTypes as MessageFeedActions } from "../message-feed/types";
 import { InventoryActions } from "../inventory/types";
+import { CombatActions } from "../player-actions/violence/types";
 
 export const CLEAR_STORE = "CLEAR_STORE";
 
@@ -18,4 +19,5 @@ export type AppActions =
   | AttributeActions
   | MessageFeedActions
   | GeneralStoreActions
-  | InventoryActions;
+  | InventoryActions
+  | CombatActions;
