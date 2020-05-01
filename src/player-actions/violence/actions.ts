@@ -5,7 +5,9 @@ import {
   Enemy,
   ALTER_MOMENTUM,
   CombatAction,
-  SELECT_COMBAT_ACTION
+  SELECT_PLAYER_COMBAT_ACTION,
+  SELECT_ENEMY_COMBAT_ACTION,
+  ALTER_ENEMY_HEALTH
 } from "./types";
 import { AppActions } from "../../redux-common/types";
 
@@ -27,11 +29,21 @@ export const alterMomentum = (momentum: number): AppActions => ({
   momentum
 });
 
-export const selectCombatAction = (
-  combatAction: CombatAction,
-  actor: "Player" | "Enemy"
+export const selectPlayerCombatAction = (
+  combatAction: CombatAction
 ): AppActions => ({
-  type: SELECT_COMBAT_ACTION,
-  combatAction,
-  actor
+  type: SELECT_PLAYER_COMBAT_ACTION,
+  combatAction
+});
+
+export const selectEnemyCombatAction = (
+  combatAction: CombatAction
+): AppActions => ({
+  type: SELECT_ENEMY_COMBAT_ACTION,
+  combatAction
+});
+
+export const alterEnemyHealth = (health: number): AppActions => ({
+  type: ALTER_ENEMY_HEALTH,
+  health
 });

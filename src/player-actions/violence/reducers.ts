@@ -4,14 +4,13 @@ import {
   EXIT_COMBAT,
   LOAD_ENEMY,
   ALTER_MOMENTUM,
-  SelectedCombatActions,
-  SELECT_COMBAT_ACTION
+  Enemy,
+  CombatAction,
+  SELECT_PLAYER_COMBAT_ACTION,
+  SELECT_ENEMY_COMBAT_ACTION,
+  ALTER_ENEMY_HEALTH
 } from "./types";
-import {
-  resourceReducerDefaultState,
-  selectedCombatActionsReducerDefaultState
-} from "../../redux-common/default-store-state";
-import { Resources } from "../../resources/types";
+import { enemyCombatantReducerDefaultState } from "../../redux-common/default-store-state";
 
 export function inCombat(state: boolean = false, action: AppActions): boolean {
   switch (action.type) {
@@ -24,17 +23,25 @@ export function inCombat(state: boolean = false, action: AppActions): boolean {
   }
 }
 
-export function enemyResources(
-  state = resourceReducerDefaultState,
+export function enemyCombatant(
+  state = enemyCombatantReducerDefaultState,
   action: AppActions
-): Resources {
+): Enemy {
   switch (action.type) {
     case LOAD_ENEMY:
       return {
-        energy: action.enemy.energy,
-        max_energy: action.enemy.max_energy,
-        health: action.enemy.health,
-        max_health: action.enemy.max_health
+        ...action.enemy
+      };
+    case ALTER_ENEMY_HEALTH:
+      const newHealth = state.health + action.health;
+      return {
+        ...state,
+        health:
+          newHealth > state.max_health
+            ? state.max_health
+            : newHealth < 0
+            ? 0
+            : newHealth
       };
     default:
       return state;
@@ -52,13 +59,25 @@ export function momentum(state = 0, action: AppActions): number {
   }
 }
 
-export function selectedCombatActions(
-  state = selectedCombatActionsReducerDefaultState,
+export function playerSelectedCombatAction(
+  state = null,
   action: AppActions
-): SelectedCombatActions {
+): CombatAction | null {
   switch (action.type) {
-    case SELECT_COMBAT_ACTION:
-      return { ...state, [action.actor]: action.combatAction };
+    case SELECT_PLAYER_COMBAT_ACTION:
+      return action.combatAction;
+    default:
+      return state;
+  }
+}
+
+export function enemySelectedCombatAction(
+  state = null,
+  action: AppActions
+): CombatAction | null {
+  switch (action.type) {
+    case SELECT_ENEMY_COMBAT_ACTION:
+      return action.combatAction;
     default:
       return state;
   }
