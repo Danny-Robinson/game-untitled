@@ -3,7 +3,7 @@ import { Clock } from "../clock/types";
 import { Attributes } from "../attributes/types";
 import { Inventory } from "../inventory/types";
 import { ItemName } from "../inventory/items";
-import { SelectedCombatActions } from "../player-actions/violence/types";
+import { Enemy, EnemyNames } from "../player-actions/violence/types";
 
 export const DEFAULT_MAX_ENERGY: number = 100;
 export const DEFAULT_MAX_HEALTH: number = 100;
@@ -15,6 +15,15 @@ export const resourceReducerDefaultState: Resources = {
   energy: DEFAULT_MAX_ENERGY,
   health: 50,
   max_health: DEFAULT_MAX_HEALTH
+};
+
+export const enemyCombatantReducerDefaultState: Enemy = {
+  name: EnemyNames.Unknown,
+  max_energy: DEFAULT_MAX_ENERGY,
+  energy: DEFAULT_MAX_ENERGY,
+  health: 50,
+  max_health: DEFAULT_MAX_HEALTH,
+  moveList: []
 };
 
 export const clockReducerDefaultState: Clock = {
@@ -38,9 +47,4 @@ export const inventoryReducerDefaultState: Inventory = {
   items: { [ItemName.ChocolateBar]: 0, [ItemName.Bandage]: 0 },
   tradeables: 0,
   cash: 0
-};
-
-export const selectedCombatActionsReducerDefaultState: SelectedCombatActions = {
-  playerAction: null,
-  enemyAction: null
 };

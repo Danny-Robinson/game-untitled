@@ -38,14 +38,25 @@ class Resources extends React.PureComponent<ResourcesProps> {
   }
 }
 
-export const mapState = (state: StoreState, props: OwnProps) => ({
-  resources:
-    state && props.player
-      ? state.resources
-      : state && !props.player
-      ? state.enemyResources
-      : resourceReducerDefaultState
-});
+export const mapState = (state: StoreState, props: OwnProps) => {
+  if (props.player) {
+    return {
+      resources: state ? state.resources : resourceReducerDefaultState
+    };
+  }
+
+  if (!props.player)
+    return {
+      resources: state
+        ? {
+            energy: state.enemyCombatant.energy,
+            max_energy: state.enemyCombatant.max_energy,
+            health: state.enemyCombatant.health,
+            max_health: state.enemyCombatant.max_health
+          }
+        : resourceReducerDefaultState
+    };
+};
 
 const connector = connect(mapState);
 

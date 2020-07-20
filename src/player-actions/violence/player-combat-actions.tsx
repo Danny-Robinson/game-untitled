@@ -2,8 +2,8 @@ import { CombatAction } from "./types";
 import React from "react";
 import Card from "../../common/card";
 import Button from "../../common/button";
-import { selectCombatAction } from "./actions";
 import { connect, ConnectedProps } from "react-redux";
+import { selectPlayerCombatAction } from "./actions";
 
 interface OwnProps {
   moveList: ReadonlyArray<CombatAction>;
@@ -21,7 +21,7 @@ class PlayerCombatActions extends React.PureComponent<
       <Card title="Combat Actions">
         {moveList.map((move) => (
           <Button onClick={this.selectCombatAction.bind(this, move)}>
-            {move.name}
+            {`${move.name} (${move.speed})`}
           </Button>
         ))}
       </Card>
@@ -29,10 +29,12 @@ class PlayerCombatActions extends React.PureComponent<
   }
 
   private selectCombatAction = (move: CombatAction) => {
-    this.props.selectCombatAction(move, "Player");
+    this.props.selectPlayerCombatAction(move);
   };
 }
 
-const connector = connect(undefined, { selectCombatAction });
+const connector = connect(undefined, {
+  selectPlayerCombatAction
+});
 
 export default connector(PlayerCombatActions);

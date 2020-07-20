@@ -31,7 +31,23 @@ class CombatPage extends React.PureComponent<ConnectedProps<typeof connector>> {
           <Column size={4}>
             <Card title="Momentum">
               <Column size={8} className="align-self-center">
-                <Slider disabled value={this.props.momentum} min={-5} max={5} />
+                <Slider
+                  disabled
+                  value={this.props.momentum}
+                  min={-5}
+                  max={5}
+                  marks={[
+                    {
+                      value: -5,
+                      label: "Player"
+                    },
+                    { value: 0, label: "Neutral" },
+                    {
+                      value: 5,
+                      label: "Enemy"
+                    }
+                  ]}
+                />
               </Column>
             </Card>
           </Column>

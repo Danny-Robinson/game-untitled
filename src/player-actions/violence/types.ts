@@ -12,11 +12,7 @@ export interface CombatAction {
   speed: CombatActionSpeed;
   type: CombatActionType;
   damage: number;
-}
-
-export interface SelectedCombatActions {
-  playerAction: CombatAction | null;
-  enemyAction: CombatAction | null;
+  speedValue: number;
 }
 
 export enum CombatActionType {
@@ -31,6 +27,7 @@ export enum CombatActionSpeed {
 }
 
 export enum EnemyNames {
+  Unknown = "Unknown",
   CrackFiend = "Crack Fiend"
 }
 
@@ -56,11 +53,22 @@ export interface AlterMomentumAction {
   momentum: number;
 }
 
-export const SELECT_COMBAT_ACTION = "SELECT_COMBAT_ACTION";
-export interface SelectCombatActionAction {
-  type: typeof SELECT_COMBAT_ACTION;
+export const SELECT_PLAYER_COMBAT_ACTION = "SELECT_PLAYER_COMBAT_ACTION";
+export interface SelectPlayerCombatActionAction {
+  type: typeof SELECT_PLAYER_COMBAT_ACTION;
   combatAction: CombatAction;
-  actor: "Player" | "Enemy";
+}
+
+export const SELECT_ENEMY_COMBAT_ACTION = "SELECT_ENEMY_COMBAT_ACTION";
+export interface SelectEnemyCombatActionAction {
+  type: typeof SELECT_ENEMY_COMBAT_ACTION;
+  combatAction: CombatAction;
+}
+
+export const ALTER_ENEMY_HEALTH = "ALTER_ENEMY_HEALTH";
+export interface AlterEnemyHealthAction {
+  type: typeof ALTER_ENEMY_HEALTH;
+  health: number;
 }
 
 export type CombatActions =
@@ -68,4 +76,6 @@ export type CombatActions =
   | ExitCombatAction
   | LoadEnemyAction
   | AlterMomentumAction
-  | SelectCombatActionAction;
+  | SelectPlayerCombatActionAction
+  | SelectEnemyCombatActionAction
+  | AlterEnemyHealthAction;
